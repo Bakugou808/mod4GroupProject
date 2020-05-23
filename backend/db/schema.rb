@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 2020_05_23_033823) do
   create_table "followers", force: :cascade do |t|
     t.bigint "profile_id", null: false
     t.integer "follower"
+    # need to add , null: false to follower, and rename it as follower_id and rename profile_id as followed_id
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["profile_id"], name: "index_followers_on_profile_id"

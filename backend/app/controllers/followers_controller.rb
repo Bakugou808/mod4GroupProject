@@ -1,25 +1,37 @@
 class FollowersController < ApplicationController
-    before_action :set_, only: [:show, :update, :destroy]
+    before_action :set_follower, only: [:show, :update, :destroy]
 
     def show 
+        render json: @follower
     end 
 
     def create 
+        follower = Follower.new(follower_params)
+        if follower.save 
+            render json: follower 
+        # else
+        end 
     end 
 
     def update 
+        if @follower.update(follower_params)
+            render json:@follower 
+        # else 
+        end 
     end 
 
     def destroy 
+        @follower.destroy 
+        render json: "Follower Deleted"
     end 
-
 
     private 
 
-    def set_ 
+    def set_follower 
+        @follower = Follower.find(params[:id])
     end 
 
-    def _params
-        params.require().permit()
+    def follower_params
+        params.require(:follower).permit(:profile_id, :follower)
     end 
 end

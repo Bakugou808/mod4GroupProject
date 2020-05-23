@@ -1,5 +1,10 @@
 class CommentsController < ApplicationController
-    before_action :set_, only: [:show, :update, :destroy]
+    before_action :set_comment, only: [:show, :update, :destroy]
+
+    def index 
+        comments = Comment.all 
+        render json: comments
+    end
 
     def show 
         render json: @comment 
@@ -22,7 +27,7 @@ class CommentsController < ApplicationController
 
     def destroy 
         @comment.destroy 
-        
+        render json: "Comment Deleted"
     end 
 
 
