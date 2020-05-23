@@ -1,25 +1,44 @@
 class LikesController < ApplicationController
-    before_action :set_, only: [:show, :update, :destroy]
+    before_action :set_like, only: [:show, :update, :destroy]
+
+    def index 
+        likes = Like.all 
+        render json: likes
+    end
 
     def show 
+        render json: @like
     end 
 
-    def create 
+    def create
+        byebug
+        like = Like.new(like_params)
+        if like.save 
+            render json: like 
+        # else
+        end 
     end 
 
     def update 
+        if @like.update(like_params)
+            render json: @like 
+        # else 
+        end 
     end 
 
     def destroy 
+        @like.destroy 
+        render json: "Like Deleted"
     end 
 
 
     private 
 
-    def set_ 
+    def set_like 
+        @like = Like.find(params[:id])
     end 
 
-    def _params
-        params.require().permit()
+    def like_params
+        params.require(:like).permit(:profiles_id, :likable_type, :likable_id)
     end 
 end
