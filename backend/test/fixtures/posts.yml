@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  profile: one
+  media_file: MyString
+  caption: MyString
+  timestamp: 2020-05-22 17:39:43
+
+two:
+  profile: two
+  media_file: MyString
+  caption: MyString
+  timestamp: 2020-05-22 17:39:43
