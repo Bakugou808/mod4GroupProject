@@ -8,7 +8,7 @@ class ProfilesController < ApplicationController
 
 
     def show
-        render json: @profile 
+        render json: @profile, include: ['posts', 'followers']
     end 
 
     def create 

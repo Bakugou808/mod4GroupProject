@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_23_033823) do
+ActiveRecord::Schema.define(version: 2020_05_23_230643) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,21 +27,20 @@ ActiveRecord::Schema.define(version: 2020_05_23_033823) do
 
   create_table "followers", force: :cascade do |t|
     t.bigint "profile_id", null: false
-    t.integer "follower"
-    # need to add , null: false to follower, and rename it as follower_id and rename profile_id as followed_id
+    t.integer "follower_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["profile_id"], name: "index_followers_on_profile_id"
   end
 
   create_table "likes", force: :cascade do |t|
-    t.bigint "profiles_id", null: false
+    t.bigint "profile_id", null: false
     t.string "likable_type", null: false
     t.bigint "likable_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["likable_type", "likable_id"], name: "index_likes_on_likable_type_and_likable_id"
-    t.index ["profiles_id"], name: "index_likes_on_profiles_id"
+    t.index ["profile_id"], name: "index_likes_on_profile_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -76,7 +75,7 @@ ActiveRecord::Schema.define(version: 2020_05_23_033823) do
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "profiles"
   add_foreign_key "followers", "profiles"
-  add_foreign_key "likes", "profiles", column: "profiles_id"
+  add_foreign_key "likes", "profiles"
   add_foreign_key "posts", "profiles"
   add_foreign_key "profiles", "users"
 end

@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
     end
 
     def show 
-        render json: @comment 
+        render json: @comment, include: ['likes', 'post', 'profile']
     end 
 
     def create 
