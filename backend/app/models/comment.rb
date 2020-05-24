@@ -1,5 +1,5 @@
 class Comment < ApplicationRecord
   belongs_to :post
   belongs_to :profile
-  has_many :likes, as: :likable
+  has_many :likes, as: :likable, dependent: :destroy
 end

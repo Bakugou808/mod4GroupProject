@@ -6,6 +6,7 @@ class FollowersController < ApplicationController
     end 
 
     def create 
+        byebug
         follower = Follower.new(follower_params)
         if follower.save 
             render json: follower 
@@ -32,6 +33,6 @@ class FollowersController < ApplicationController
     end 
 
     def follower_params
-        params.require(:follower).permit(:profile_id, :follower)
+        params.require(:follower).permit(:profile_id, :follower_id)
     end 
 end

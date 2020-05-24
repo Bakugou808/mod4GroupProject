@@ -1,6 +1,6 @@
 class Profile < ApplicationRecord
   belongs_to :user
-  has_many :posts
-  has_many :followers
-  has_many :likes
+  has_many :posts, dependent: :destroy
+  has_many :followers, dependent: :destroy
+  has_many :comments, dependent: :destroy
 end
