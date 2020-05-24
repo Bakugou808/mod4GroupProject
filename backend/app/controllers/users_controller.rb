@@ -11,6 +11,7 @@ class UsersController < ApplicationController
     end 
 
     def create 
+        byebug
         user = User.new(user_params)
         if user.save 
             render json: user 
@@ -39,6 +40,6 @@ class UsersController < ApplicationController
     end 
 
     def user_params
-        params.require(:user).permit(:name, :birthday, :email, :location)
+        params.require(:user).permit(:name, :birthday, :email, :location, :password_digest)
     end 
 end
