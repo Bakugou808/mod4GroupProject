@@ -26,6 +26,7 @@ export default class Signup extends Component {
         const {password, password_confirmation} = this.state.fields
         if (password_confirmation === password) {
             api.auth.signup(this.state.fields).then(res => {
+                console.log(res)
                 if (!res.error) {
                   // const updatedState = { ...this.state.auth, user: res };
                   this.props.onSignup(res);

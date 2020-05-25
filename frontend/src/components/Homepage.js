@@ -14,8 +14,7 @@ class Homepage extends Component {
 
     render() {
         
-        const {user} = this.props.user
-        const {name} = user
+        const {name} = this.props.user
         return (
             
             <div>

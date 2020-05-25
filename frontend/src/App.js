@@ -28,15 +28,15 @@ class App extends React.Component {
       // make a request to the backend and find our user
       api.auth.getCurrentUser().then(user => {
         // console.log(user)
-        const updatedState = { ...this.state.auth, user: user };
+        const updatedState = { ...this.state.auth, user: {...user} };
         this.setState({ auth: updatedState });
       });
     }
   }
   
   login = (data) => {
-    debugger
-    const updatedState = { ...this.state.auth, user: {id: data.id,  email: data.email, userInfo: data.user} };
+    console.log(data)
+    const updatedState = { ...this.state.auth, user: {...data} };
     localStorage.setItem("token", data.jwt);
     this.setState({ auth: updatedState });
   }
