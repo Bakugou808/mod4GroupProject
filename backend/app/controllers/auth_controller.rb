@@ -7,16 +7,17 @@ class AuthController < ApplicationController
         if user && user.authenticate(params[:password])
           # issue that user a token\
           token = issue_token(user)
-          render json: {name: user.name, birthday:user.birthday, created_at: user.created_at, location: user.location, id: user.id, email: user.email, jwt: token}
+          render json: {name: user.name, birthday:user.birthday, created_at: user.created_at, location: user.location, id: user.id, email: user.email, profiles:user.profiles, jwt: token}
         else
           render json: {error: 'That user could not be found'}, status: 401
         end
       end
     
       def show
+        
         user = User.find_by(id: user_id)
         if user && logged_in?
-          render json: {name: user.name, birthday:user.birthday, created_at: user.created_at, location: user.location, id: user.id, email: user.email, jwt: token}
+          render json: {name: user.name, birthday:user.birthday, created_at: user.created_at, location: user.location, id: user.id, email: user.email,profiles:user.profiles, jwt: token}
         else
           render json: {error: 'No user could be found'}, status: 401
         end

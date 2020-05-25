@@ -15,7 +15,6 @@ const AuthHOC = WrappedComponent => {
     }
 
     checkLogin = () => {
-      console.log("checking login");
       if (!localStorage.getItem("token")) {
         this.props.history.push("/")
       } else {
