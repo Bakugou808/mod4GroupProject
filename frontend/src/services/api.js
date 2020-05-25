@@ -7,7 +7,7 @@ const headers = () => {
       "Content-Type": "application/json",
       Accept: "application/json",
       Authorization: token()
-    };
+    }; 
 };
 
 const login = data => {
@@ -19,8 +19,6 @@ const login = data => {
 };
 
 const signup = (data) => {
-    console.log(data)
-    debugger
     return fetch(API_ROOT('/users'), {
         method: "POST",
         headers: {"Content-Type": "application/json", Accept: "application/json"},
@@ -31,12 +29,14 @@ const signup = (data) => {
 
 const getCurrentUser = () => {
     // console.log("getting current user", headers);
-    return fetch(`${API_ROOT}/current_user`, {
+  
+    return fetch(API_ROOT('/current_user'), {
         headers: headers()
     }).then(res => {
         // console.log(res)
         return res.json();
-    });
+    })
+
 };
 
 export const api = {

@@ -11,11 +11,13 @@ class UsersController < ApplicationController
     end 
 
     def create 
-        byebug
-        user = User.new(user_params)
-        if user.save 
-            render json: user 
-        # else
+        
+        @user = User.new(user_params)
+        if @user.save 
+            token = issue_token_on_signup(@user)
+            render json: {name: @user.name, birthday:@user.birthday, created_at: @user.created_at, location: @user.location, id: @user.id, email: @user.email, jwt: token}
+        else
+            render json: {error: 'That user could not be found'}, status: 401
         end 
     end 
 
@@ -40,6 +42,6 @@ class UsersController < ApplicationController
     end 
 
     def user_params
-        params.require(:user).permit(:name, :birthday, :email, :location, :password_digest)
+        params.permit(:name, :birthday, :email, :location, :password, :password_confirmation)
     end 
 end
