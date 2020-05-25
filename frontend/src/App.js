@@ -1,13 +1,13 @@
 import React from 'react';
-import Login from './components/Login'
+import Login from './components/LoginSignup/Login'
 import { api } from "./services/api";
-import Signup from './components/Signup'
+import Signup from './components/LoginSignup/Signup'
 import { Route, Navlink, Link } from "react-router-dom";
-import Gallery from './components/Gallery'
+import Gallery from './components/Gallery/Gallery'
 
-import Landingpage from './components/Landingpage'
-import Homepage from './components/Homepage'
-import Profile from './components/Profile'
+import Landingpage from './components/LandingPage/Landingpage'
+import Homepage from './components/Homepage/Homepage'
+import Profile from './components/Profile/Profile'
 
 
 class App extends React.Component {

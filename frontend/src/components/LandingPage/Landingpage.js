@@ -1,6 +1,6 @@
 import React from 'react'
-import Login from './Login'
-import Signup from './Signup'
+import Login from '../LoginSignup/Login'
+import Signup from '../LoginSignup/Signup'
 import { Route, Navlink, Link } from "react-router-dom";
 
 
