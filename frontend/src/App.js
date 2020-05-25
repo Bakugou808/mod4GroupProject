@@ -7,6 +7,7 @@ import Gallery from './components/Gallery'
 
 import Landingpage from './components/Landingpage'
 import Homepage from './components/Homepage'
+import Profile from './components/Profile'
 
 
 class App extends React.Component {
@@ -50,13 +51,14 @@ class App extends React.Component {
   
   render() {
     const {user} = this.state.auth
+    const {profiles} = user
     return (
       <div>
 
           <Route exact path="/" render={props => <Landingpage {...props} onSignup={this.login} onLogin={this.login}/> } />
           <Route exact path='/home' render={props => <Homepage {...props} user={user} onLogout={this.logout} />}/>
           <Route exact path='/gallery' render={props => <Gallery {...props} user={user} /> } />
-          
+          <Route path={`/profiles/:id`}  render={props => <Profile {...props}/>} />
 
             
       </div>

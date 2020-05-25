@@ -6,6 +6,18 @@ class ProfilesController < ApplicationController
         render json: profiles
     end
 
+    def produceFeed
+        # gather content/posts from friends
+
+    end 
+
+    def followers 
+
+    end 
+
+    def following 
+
+    end 
 
     def show
         render json: @profile, include: ['posts', 'followers']
