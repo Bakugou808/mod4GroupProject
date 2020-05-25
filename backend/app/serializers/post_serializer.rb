@@ -4,3 +4,4 @@ class PostSerializer < ActiveModel::Serializer
   has_many :comments
   has_many :likes, as: :likable
 end
+ 

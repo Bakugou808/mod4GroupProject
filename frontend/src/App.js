@@ -3,9 +3,11 @@ import Login from './components/Login'
 import { api } from "./services/api";
 import Signup from './components/Signup'
 import { Route, Navlink, Link } from "react-router-dom";
+import Gallery from './components/Gallery'
 
 import Landingpage from './components/Landingpage'
 import Homepage from './components/Homepage'
+import Profile from './components/Profile'
 
 
 class App extends React.Component {
@@ -35,6 +37,7 @@ class App extends React.Component {
   }
   
   login = (data) => {
+    
     console.log(data)
     const updatedState = { ...this.state.auth, user: {...data} };
     localStorage.setItem("token", data.jwt);
@@ -47,18 +50,16 @@ class App extends React.Component {
   };
   
   render() {
+    const {user} = this.state.auth
+    const {profiles} = user
     return (
       <div>
-          {/* <Link className="signup" to='/signup'>Signup</Link>
-          <br></br>
-          <Link className="login" to='/login'>Login</Link> */}
 
           <Route exact path="/" render={props => <Landingpage {...props} onSignup={this.login} onLogin={this.login}/> } />
-          {/* <Signup {...props} onSignup={this.login}/> */}
-          <Route exact path='/home' render={props => <Homepage {...props} user={this.state.auth.user} onLogout={this.logout} />}/>
-          
-          {/* <Route exact path="/signup" render={props => <Signup {...props} onSignup={this.login}/>} />
-          <Route exact path="/login" render={props => <Login {...props} onLogin={this.login} />}/> */}
+          <Route exact path='/home' render={props => <Homepage {...props} user={user} onLogout={this.logout} />}/>
+          <Route exact path='/gallery' render={props => <Gallery {...props} user={user} /> } />
+          <Route path={`/profiles/:id`}  render={props => <Profile {...props}/>} />
+
             
       </div>
     );
