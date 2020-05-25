@@ -11,6 +11,7 @@ const headers = () => {
 };
 
 const login = data => {
+  
     return fetch(API_ROOT('/auth'), {
       method: "POST",
       headers: headers(),
@@ -36,8 +37,12 @@ const getCurrentUser = () => {
         // console.log(res)
         return res.json();
     })
-
 };
+
+const getUserProfiles = () => {
+  
+}
+
 
 export const api = {
     auth: {
