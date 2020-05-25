@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { api } from '../services/api'
 
  class Profile extends Component {
 
@@ -6,15 +7,23 @@ import React, { Component } from 'react'
         profile: {}
     }
 
+    componentDidMount(){
+        
+        api.profile.getCurrentProfile(this.props.match.params.id).then(profile => this.setState({profile: profile}))
+    }
+
+
     
     render() {
-        
-        const {username} = this.props.profile
+        const {profile} = this.state
+        const {username} = this.state.profile
         return (
+          
             <div>
-                {/* {username}'s Profile */}
-                this is a profile
+                {username && `${username}'s Profile`}
             </div>
+         
+            
         )
     }
 }

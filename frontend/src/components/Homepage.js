@@ -26,7 +26,9 @@ class Homepage extends Component {
         const {profiles} = this.props.user 
         
         return profiles.map(profile =>  (
-                <div><Link to={`/home/${profile.username}`} className='profile_link'> {profile.username} </Link></div> 
+                <Fragment>
+                    <div><Link to={`/profiles/${profile.id}`} className='profile_link'> {profile.username} </Link></div> 
+                </Fragment>
                 
             )
         )
@@ -37,7 +39,7 @@ class Homepage extends Component {
         const {profiles} = this.props.user 
         
         return profiles.map(profile =>  (
-        <Route exact path={`/home/:username`} render={props => <Profile {...props} profile={profile} />}   />
+        <Route exact path={`/home/:profileID`} render={props => <Profile {...props} profile={profile} />}   />
             )
         )
     }
@@ -57,22 +59,11 @@ class Homepage extends Component {
                 <div>
                 {profiles && this.renderProfiles()}
                 </div>
-                {/* <div>
-                    {profiles && <ProfileList profiles={profiles} />} 
-                </div> */}
-               
-                {/* {profiles && this.renderProfileRoutes()} */}
-                <Route path={`${match.url}/:username`} render={() => <h3>Choose a movie from the list above</h3>}    />
-                <Route path={`/profiles/:username`}  render={() => <h3>Choose a movie from the list above</h3>} />
-                {/* render={props => <Profile {...props} profiles={profiles} />}  */}
-                {/* render={props => <Profile {...props} profiles={profiles} />} */}
+                <div>
+                    {/* {profiles && <ProfileList profiles={profiles} />}  */}
+                </div>
+                {/* <Route path={`/${match.params}/:username`}  render={props => <Profile {...props} profiles={profiles} />} /> */}
 
-                {/* <Switch>
-                    <Route path={`${match.url}/:username`}>
-                        <Profile  profiles={profiles} />} 
-                    </Route>
-
-                </Switch> */}
             </div>
         )
     }

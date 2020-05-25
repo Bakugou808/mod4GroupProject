@@ -39,8 +39,13 @@ const getCurrentUser = () => {
     })
 };
 
-const getUserProfiles = () => {
-  
+const getCurrentProfile = (profileID) => {
+    return fetch(API_ROOT(`/profiles/${profileID}`), {
+      headers: headers()
+    }).then(res => {
+      // console.log(res)
+      return res.json()
+    })
 }
 
 
@@ -49,5 +54,8 @@ export const api = {
       login,
       signup,
       getCurrentUser
+    },
+    profile: {
+      getCurrentProfile,
     }
 };

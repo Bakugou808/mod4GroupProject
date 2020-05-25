@@ -9,7 +9,7 @@ class PostsController < ApplicationController
     def show 
         render json: @post, include: ['comments', 'likes']
     end 
-
+ 
     def create 
         post = Post.new(post_params)
         if post.save 
