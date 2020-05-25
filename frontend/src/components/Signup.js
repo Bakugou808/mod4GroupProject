@@ -8,8 +8,8 @@ export default class Signup extends Component {
         error: false,
         fields: {
           email: '',
-          password_digest: '',
-          confirmedPassword: '',
+          password: '',
+          password_confirmation: '',
           name: '',
           birthday: '', 
           location: ''
@@ -19,17 +19,17 @@ export default class Signup extends Component {
     handleChange = e => {
         const newFields = { ...this.state.fields, [e.target.name]: e.target.value };
         this.setState({ fields: newFields });
-    };
+    }; 
 
     handleSubmit = e => {
         e.preventDefault();
-        const {password_digest, confirmedPassword} = this.state.fields
-        if (confirmedPassword === password_digest) {
+        const {password, password_confirmation} = this.state.fields
+        if (password_confirmation === password) {
             api.auth.signup(this.state.fields).then(res => {
                 if (!res.error) {
                   // const updatedState = { ...this.state.auth, user: res };
                   this.props.onSignup(res);
-                  this.props.history.push('/');
+                  this.props.history.push('/home');
                 } else {
                   this.setState({ error: true });
                 }
@@ -42,7 +42,7 @@ export default class Signup extends Component {
     
 
     render() {
-        const {name, birthday, email, password_digest, location, confirmedPassword} = this.state.fields
+        const {name, birthday, email, password, location, password_confirmation} = this.state.fields
         return (
         <div>
             {this.state.error ? <h1>Try again...</h1> : null}
@@ -53,14 +53,14 @@ export default class Signup extends Component {
                <input type="email" name="email" value={email} required onChange={this.handleChange}/>
                <label>Birthday</label>
                <input type="text" name="birthday" value={birthday} required onChange={this.handleChange}/>
-               <label>Location</label>
-               <input type="text" name="location" value={location} required onChange={this.handleChange}/>
+               {/* <label>Location</label>
+               <input type="text" name="location" value={location} required onChange={this.handleChange}/> */}
                <label>Password</label>
-               <input type="password" name="password_digest" value={password_digest} required onChange={this.handleChange}/>
+               <input type="password" name="password" value={password} required onChange={this.handleChange}/>
                <label>Verify Password</label>
-               <input type="password" name="confirmedPassword" value={confirmedPassword} required onChange={this.handleChange}/>
+               <input type="password" name="password_confirmation" value={password_confirmation} required onChange={this.handleChange}/>
                
-               <button type="submit">Login</button>
+               <button type="submit">Signup</button>
            </form>
        </div>
         )

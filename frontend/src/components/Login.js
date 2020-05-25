@@ -22,7 +22,7 @@ export default class Login extends Component {
           if (!res.error) {
             // const updatedState = { ...this.state.auth, user: res };
             this.props.onLogin(res);
-            this.props.history.push('/');
+            this.props.history.push('/home');
           } else {
             this.setState({ error: true });
           }

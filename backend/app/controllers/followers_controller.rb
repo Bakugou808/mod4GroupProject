@@ -6,7 +6,7 @@ class FollowersController < ApplicationController
     end 
 
     def create 
-        byebug
+        
         follower = Follower.new(follower_params)
         if follower.save 
             render json: follower 
