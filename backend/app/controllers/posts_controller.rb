@@ -4,7 +4,7 @@ class PostsController < ApplicationController
     def index 
         posts = Post.all 
         render json: posts
-    end
+    end 
 
     def show 
         render json: @post, include: ['comments', 'likes']
@@ -17,10 +17,14 @@ class PostsController < ApplicationController
     end 
   
     def create 
-        byebug
+        
         post = Post.new(post_params)
+        # profile = Profile.find(post_params[:profile_id])
         if post.save 
-            render json: post 
+            # post.media_file.attach(params[:media_file])
+            url = url_for(post.media_file) 
+            
+            render json: url
         else
             render json: "Failed to save post"
         end 
@@ -45,6 +49,6 @@ class PostsController < ApplicationController
     end 
 
     def post_params
-        params.require(:post).permit(:profile_id, :media_file, :caption)
+        params.permit(:profile_id, :media_file, :caption)
     end 
 end
