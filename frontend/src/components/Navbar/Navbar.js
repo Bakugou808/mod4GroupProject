@@ -1,7 +1,8 @@
 import React, { Component, Fragment } from 'react'
-import { Route, Navlink, Link } from "react-router-dom";
+import { Route, Navlink, Link, withRouter } from "react-router-dom";
+import './Navbar.scss'
 
-export default class Navbar extends Component {
+class Navbar extends Component {
 
     onLogout = () => {
         const {onLogout} = this.props 
@@ -10,16 +11,25 @@ export default class Navbar extends Component {
     }
 
     render() {
+        console.log(this.props)
         return (
-            <Fragment>
-                <div>
-                    This is a Navbar
-                    <Link to="/gallery" className="gallery"> profile img</Link>
+            <nav className="nav">
+               <Link className="logo-container" to="/">
+                   {/* put logo here  */}
+                   logo img
+               </Link>
+                { this.props.user.name? <Link to="/gallery" className="gallery">
+                    profile img
+                </Link> : null 
+                }
+                <div className="options">
+                {
+                    this.props.user.name ? <div className="option" onClick={this.onLogout}>SIGN OUT</div> : null
+                }           
                 </div>
-                <div>
-                </div>
-            </Fragment>
-
+            </nav>
         )
     }
 }
+
+export default withRouter(Navbar)

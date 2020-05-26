@@ -16,11 +16,7 @@ class Homepage extends Component {
     componentDidMount() {
 
     }
-    onLogout = () => {
-        const {onLogout} = this.props 
-        onLogout()
-        this.props.history.push("/")
-    }
+
 
     renderProfiles = () => {
         const {profiles} = this.props.user 
@@ -51,9 +47,7 @@ class Homepage extends Component {
         return (
             
             <div>
-                <Navbar  user={user} onLogout={onLogout} />
                 {name && `Welcome To the homepage ${name}`}
-                <button type="button" onClick={this.onLogout}>Logout</button>
                 <br></br>
                 <br></br>
                 <div>

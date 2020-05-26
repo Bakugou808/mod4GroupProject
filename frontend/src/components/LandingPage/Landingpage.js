@@ -1,4 +1,5 @@
 import React from 'react'
+import './Landingpage.css'
 import Login from '../LoginSignup/Login'
 import Signup from '../LoginSignup/Signup'
 import { Route, Navlink, Link } from "react-router-dom";
@@ -8,7 +9,7 @@ import { Route, Navlink, Link } from "react-router-dom";
 const Landingpage = (props) => {
     const {onLogin, onSignup} = props
     return (
-        <div>
+        <div className="landing-page">
             <div className="signup_form">
                 Signup
                 <br></br>
