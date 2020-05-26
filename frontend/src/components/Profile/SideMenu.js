@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Route, Navlink, Link } from "react-router-dom";
-import { api } from '../services/api'
+import { api } from '../../services/api'
 import Search from './Search'
 
 export default class SideMenu extends Component {

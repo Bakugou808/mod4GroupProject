@@ -1,10 +1,10 @@
 import React, { Component, Fragment } from 'react'
 import { Route, Navlink, Link } from "react-router-dom";
 
-import { api } from '../services/api'
+import { api } from '../../services/api'
 import SideMenu from './SideMenu'
 import Search from './Search'
-import Gallery from './Gallery'
+import Gallery from '../Gallery/Gallery'
 import AddMedia from './AddMedia'
 import Activity from './Activity'
 import Stats from './Stats'

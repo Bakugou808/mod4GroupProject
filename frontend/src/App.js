@@ -1,14 +1,15 @@
 import React from 'react';
-import Login from './components/Login'
+import './App.css'
+import Login from './components/LoginSignup/Login'
 import { api } from "./services/api";
-import Signup from './components/Signup'
-import { Route, Navlink, Link } from "react-router-dom";
-import Gallery from './components/Gallery'
+import Signup from './components/LoginSignup/Signup'
+import { Route, Navlink, Link, Switch } from "react-router-dom";
+import Gallery from './components/Gallery/Gallery'
 
-import Landingpage from './components/Landingpage'
-import Homepage from './components/Homepage'
-import Profile from './components/Profile'
-import Search from './components/Search'
+import Landingpage from './components/LandingPage/Landingpage'
+import Homepage from './components/Homepage/Homepage'
+import Profile from './components/Profile/Profile'
+import Navbar from './components/Navbar/Navbar'
 
 
 class App extends React.Component {
@@ -55,11 +56,11 @@ class App extends React.Component {
     const {profiles} = user
     return (
       <div>
-
-          <Route exact path="/" render={props => <Landingpage {...props} onSignup={this.login} onLogin={this.login}/> } />
-          <Route exact path='/home' render={props => <Homepage {...props} user={user} onLogout={this.logout} />}/>
-          <Route exact path='/gallery' render={props => <Gallery {...props} user={user} /> } />
-          <Route path={`/profiles/:id`}  render={props => <Profile {...props}/>} />
+          <Navbar user={this.state.auth.user} onLogout={this.logout} />
+            <Route exact path="/" render={props => <Landingpage {...props} onSignup={this.login} onLogin={this.login}/> } />
+            <Route exact path='/home' render={props => <Homepage {...props} user={user} onLogout={this.logout} />}/>
+            <Route exact path='/gallery' render={props => <Gallery {...props} user={user} /> } />
+            <Route path={`/profiles/:id`}  render={props => <Profile {...props}/>} />
             
       </div>
     );
