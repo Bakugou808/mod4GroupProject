@@ -8,6 +8,7 @@ import Gallery from './components/Gallery'
 import Landingpage from './components/Landingpage'
 import Homepage from './components/Homepage'
 import Profile from './components/Profile'
+import Search from './components/Search'
 
 
 class App extends React.Component {
@@ -59,7 +60,6 @@ class App extends React.Component {
           <Route exact path='/home' render={props => <Homepage {...props} user={user} onLogout={this.logout} />}/>
           <Route exact path='/gallery' render={props => <Gallery {...props} user={user} /> } />
           <Route path={`/profiles/:id`}  render={props => <Profile {...props}/>} />
-
             
       </div>
     );

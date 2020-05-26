@@ -13,9 +13,6 @@ class Homepage extends Component {
         profiles: []
     }
 
-    componentDidMount() {
-
-    }
     onLogout = () => {
         const {onLogout} = this.props 
         onLogout()
@@ -43,7 +40,7 @@ class Homepage extends Component {
             )
         )
     }
-    // 
+    
 
     render() {
         const {user, onLogout, match} = this.props
@@ -59,10 +56,6 @@ class Homepage extends Component {
                 <div>
                 {profiles && this.renderProfiles()}
                 </div>
-                <div>
-                    {/* {profiles && <ProfileList profiles={profiles} />}  */}
-                </div>
-                {/* <Route path={`/${match.params}/:username`}  render={props => <Profile {...props} profiles={profiles} />} /> */}
 
             </div>
         )

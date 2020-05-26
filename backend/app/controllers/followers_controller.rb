@@ -6,13 +6,22 @@ class FollowersController < ApplicationController
     end 
 
     def create 
-        
         follower = Follower.new(follower_params)
         if follower.save 
             render json: follower 
         # else
         end 
     end 
+
+    def profiles_followers
+        followers = Follower.find_followers(params[:profile_id])
+        render json: followers 
+    end
+
+    def profiles_follower_requests
+        followers = Follower.find_follower_requests(params[:profile_id])
+        render json: followers
+    end
 
     def update 
         if @follower.update(follower_params)
