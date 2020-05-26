@@ -9,12 +9,20 @@ class PostsController < ApplicationController
     def show 
         render json: @post, include: ['comments', 'likes']
     end 
- 
+
+    def profiles_posts
+        
+        posts = Post.find_posts(params[:profile_id])
+        render json: posts, include: ['comments', 'likes']
+    end 
+  
     def create 
+        byebug
         post = Post.new(post_params)
         if post.save 
             render json: post 
-        # else
+        else
+            render json: "Failed to save post"
         end 
     end 
 
