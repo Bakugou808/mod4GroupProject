@@ -11,6 +11,7 @@ class Post < ApplicationRecord
     posts
   end
 
+
   # def getLikers
   #   likersProfiles = []
     
@@ -25,7 +26,6 @@ class Post < ApplicationRecord
   #   # self.save
   # end
  
-
 end
 
 
