@@ -16,8 +16,8 @@ export default function Likes (props){
         
         let count = likes.length
         let recentLikers = ["jimmy", "kaya", "docnani"]
-        let ui = <div>
-            <button type="button" onClick={addLike}>{count} Likes!</button>
+        let ui = <div className="card-body">
+            <button class="btn btn-primary" type="button" onClick={addLike}>{count} Likes!</button>
                      { }
                     {recentLikers.join(', ')}
                 </div>

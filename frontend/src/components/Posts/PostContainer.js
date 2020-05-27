@@ -12,15 +12,13 @@ export default class PostContainer extends Component {
         const {refreshMount} = this.props
 
         return (
-            <div>
-                <Image img_url={img_url} caption={caption} created_at={created_at} likes={likes} liker_id={profile_id} post_id={id}/>
-                <Likes likes={likes} post_id={id} liker_id={profile_id} type={"Post"} refreshMount={refreshMount}/>
-                
-                
-                
-                <Comments comments={comments}/>
-                
-            </div>
+                <div className="row col-sm-6">
+                    <div class="card" style={{width: '301px'}}>
+                        <Image img_url={img_url} caption={caption} created_at={created_at} likes={likes} liker_id={profile_id} post_id={id}/>
+                        <Likes class="card-body" likes={likes} post_id={id} liker_id={profile_id} type={"Post"} refreshMount={refreshMount}/>
+                        <Comments class="card-body" comments={comments}/>  
+                    </div>
+                </div>
         )
     }
 }
