@@ -15,7 +15,8 @@ class LikesController < ApplicationController
         like = Like.new(like_params)
         if like.save 
             render json: like 
-        # else
+        else
+            render json: "did not save like"
         end 
     end 
 
