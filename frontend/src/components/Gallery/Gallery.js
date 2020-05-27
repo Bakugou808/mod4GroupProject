@@ -25,9 +25,15 @@ export default class Gallery extends Component {
     
 
     render() {
+        console.log(this.state.posts)
         return (
             <div>
-                {this.renderPosts()}
+// Janu
+//                 {this.renderPosts()}
+
+                {/* <Post key={i} {...post} />*/}
+                {this.state.posts.map(post =>  <img style={{width: 300, height: 300}} src={post.img_url} /> )}
+
             </div>
         )
     }

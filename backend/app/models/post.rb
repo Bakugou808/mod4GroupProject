@@ -30,7 +30,6 @@ class Post < ApplicationRecord
   #   # self.save
   # end
  
-
 end
 
 
