@@ -10,6 +10,10 @@ class Navbar extends Component {
         this.props.history.push("/")
     }
 
+    handleClick = event => {
+        this.props.history.push(`/profiles/${this.props.user.id}/gallery`)
+    }
+
     render() {
         return (
             <nav className="nav">
@@ -17,9 +21,9 @@ class Navbar extends Component {
                    {/* put logo here  */}
                    logo img
                </Link> 
-                { this.props.user.name? <Link to="/gallery" className="gallery">
-                    profile img
-                </Link> : null 
+                { this.props.user.name? <div onClick={this.handleClick} className="gallery">
+                   <img style={{width: 50, height: 50, borderRadius: '50%'}} src={this.props.user.profiles[0]['img_file']} />
+                </div> : null 
                 }
                 <div className="options">
                 {
