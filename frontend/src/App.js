@@ -45,7 +45,7 @@ class App extends React.Component {
     localStorage.setItem("token", data.jwt);
     this.setState({ auth: updatedState });
   }
-
+ 
   logout = () => {
     localStorage.removeItem("token");
     this.setState({ auth: { user: {} } });

@@ -10,7 +10,6 @@ import Activity from './Activity'
 import Stats from './Stats'
 
 
-
  class Profile extends Component {
 
     state = {
@@ -27,6 +26,7 @@ import Stats from './Stats'
         const {profile} = this.state
         const {username} = this.state.profile
         const {match} = this.props
+        // console.log(profile)
         return (
           
             <Fragment> 
@@ -34,7 +34,7 @@ import Stats from './Stats'
                     {username && `${username}'s Profile`}
                 </div>
                 <div className="side_menu_div">
-                    <SideMenu match={match}/>
+                    <SideMenu match={match}/> 
                 </div>
                 <Route exact path={`${match.url}/search`} render={(props) => <Search {...props}/>} />
                 <Route exact path={`${match.url}/gallery`} render={props => <Gallery {...props} profile={profile} /> } />

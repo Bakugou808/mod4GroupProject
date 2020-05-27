@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import axios from 'axios'
 
 export default class ProfileForm extends Component {
     constructor() {
@@ -7,22 +8,33 @@ export default class ProfileForm extends Component {
         this.state = {
             userName: '',
             description: '',
-            img_file: '',
+            img_file: [],
+            profile: ''
         }
     }
 
-    // import selected filehandler
-    // import fileUploadHandler? 
-    // where should we put this component? in profile?
-    
     changeHandler = event => {
-        let {name, value} = event
+        let {name, value} = event.target
         this.setState({[name]: value})
     }
 
-    handleSubmit = event => {
+    selectedFileHandler = (event) => {
+        this.setState({img_file: event.target.files[0]})
+    }
+
+    handleSubmit = async event => {
         event.preventDefault()
         // post call?
+        const API_ROOT = (path)=> `http://localhost:3000${path}`
+        
+        let id = this.props.user.id
+        let data = new FormData()
+        data.append('user_id', id)
+        data.append('username', this.state.userName)
+        data.append('description', this.state.description)
+        data.append('avatar', this.state.img_file) 
+        let res = await axios.post(API_ROOT(`/profiles`), data)
+        this.setState({profile: res})
     }
 
     render() {
@@ -48,6 +60,9 @@ export default class ProfileForm extends Component {
                     />
                     <button type="submit">Make Profile</button>
                 </form>
+                <div>
+                    {this.state.profile && <img src={this.state.profile.data.img_file} /> }
+                </div>
             </div>
         )
     }
