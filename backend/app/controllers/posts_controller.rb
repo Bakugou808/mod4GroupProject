@@ -19,12 +19,14 @@ class PostsController < ApplicationController
     def create 
         
         post = Post.new(post_params)
-        # profile = Profile.find(post_params[:profile_id])
+        
         if post.save 
             # post.media_file.attach(params[:media_file])
-            url = url_for(post.media_file) 
+            url = url_for(post.photo) 
+            post.img_url = url
+            post.save
             
-            render json: url
+            render json: post
         else
             render json: "Failed to save post"
         end 
@@ -49,6 +51,6 @@ class PostsController < ApplicationController
     end 
 
     def post_params
-        params.permit(:profile_id, :media_file, :caption)
+        params.permit(:profile_id, :photo, :caption)
     end 
 end
