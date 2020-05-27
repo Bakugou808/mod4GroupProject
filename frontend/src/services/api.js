@@ -57,14 +57,14 @@ const getPosts = (profileID) => {
   })
 }
 
-// const getPost = (postID) => {
-//   return fetch(API_ROOT(`/get_posts/${profileID}`), {
-//     headers: headers()
-//   }).then(res => {
-//     // console.log(res)
-//     return res.json()
-//   })
-// }
+const getPost = (postID) => {
+  return fetch(API_ROOT(`/posts/${postID}`), {
+    headers: headers()
+  }).then(res => {
+    // console.log(res)
+    return res.json()
+  })
+}
 
 const getFollowers = (profileID) => {
   return fetch(API_ROOT(`/get_followers/${profileID}`), {
@@ -84,10 +84,34 @@ const getFollowRequests = (profileID) => {
   })
 }
 
-const uploadMedia = (params) => {
-  
+const getUser = (profileID) => {
+  return fetch(API_ROOT(`/users/${profileID}`), {
+    headers: headers()
+  }).then(res => {
+    return res.json()
+  })
 }
 
+
+const addLike = (body) => {
+  return fetch(API_ROOT(`/likes`), {
+    method: "POST",
+    headers: headers(),
+    body: JSON.stringify(body)
+  }).then(res => {
+    // console.log(res.json())
+    return res.json()
+  })
+}
+
+const getLikers = (postID) => {
+  return fetch(API_ROOT(`/find_likers/${postID}`), {
+    headers: headers()
+  }).then(res => {
+    // console.log(res)
+    return res.json()
+  })
+}
 
 
 
@@ -101,10 +125,15 @@ export const api = {
       getCurrentProfile,
     },
     posts: {
-      getPosts
+      getPosts,
+      getPost,
+      getLikers,
     },
     followers: {
       getFollowers,
       getFollowRequests,
+    },
+    likes: {
+      addLike,
     }
 };

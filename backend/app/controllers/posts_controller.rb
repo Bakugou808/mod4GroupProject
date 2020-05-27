@@ -24,6 +24,14 @@ class PostsController < ApplicationController
             # post.media_file.attach(params[:media_file])
             url = url_for(post.photo) 
             post.img_url = url
+            
+            # post.formatUrl
+
+            # image = MiniMagick::Image.new(url)
+            # image.resize "500x500"
+            # post.img_url = url
+
+
             post.save
             
             render json: post
@@ -31,6 +39,12 @@ class PostsController < ApplicationController
             render json: "Failed to save post"
         end 
     end 
+
+    # def findLikers
+    #     byebug
+    #     likers = @post.getLikers
+    #     render json: likers
+    # end
 
     def update 
         if @post.update(post_params)

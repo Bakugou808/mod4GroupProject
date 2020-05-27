@@ -1,12 +1,43 @@
-import React, { Component } from 'react'
+// import React, { Component } from 'react'
+import React from 'react'
 
-export default class Likes extends Component {
+import { api } from '../../services/api'
+
+export default function Likes (props){
     // presentational 
-    render() {
+    // let likeCount = props.likes.length 
+    // const [likes, setLikes] = React.useState(likeCount)
+
+
+    
+
+    const renderLikeUi = () => {
+        const {likes} = props 
+        
+        let count = likes.length
+        let recentLikers = ["jimmy", "kaya", "docnani"]
+        let ui = <div>
+            <button type="button" onClick={addLike}>{count} Likes!</button>
+                     { }
+                    {recentLikers.join(', ')}
+                </div>
+        return ui
+    }
+    
+    const addLike = () => {
+        const {liker_id, post_id, type, refreshMount} = props
+        
+        let body = {profile_id: liker_id, likable_type: type, likable_id: post_id}
+        api.likes.addLike(body)
+        refreshMount()
+    }
+    
+
+    // render() {
         return (
-            <div>
-                display likes + allow for adding likes
+            <div className="image_likes">
+                {renderLikeUi()}
             </div>
         )
-    }
+    // }
 }
