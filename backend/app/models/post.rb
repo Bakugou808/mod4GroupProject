@@ -7,8 +7,6 @@ class Post < ApplicationRecord
     posts = Post.where(profile_id: profileID)
     posts
   end
-
-
 end
 
 
