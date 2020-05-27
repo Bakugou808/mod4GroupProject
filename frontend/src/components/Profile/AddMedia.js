@@ -5,7 +5,8 @@ export default class AddMedia extends Component {
 
     state = {
         selectedFile: [],
-        caption: "",
+        caption: "", 
+        post: ""
     }
 
     handleCaption = (event) => {
@@ -15,16 +16,26 @@ export default class AddMedia extends Component {
 
     selectedFileHandler = (event) => {
         this.setState({selectedFile: event.target.files[0]})
+
+
     }
     
-    fileUploadHandler = () => {
-        // debugger
+     fileUploadHandler = async (event) => {
+        event.preventDefault()
         const API_ROOT = (path)=> `http://localhost:3000${path}`
+        
         let id = this.props.match.url.split('/')[2]
-        const fd = {media_file: this.state.selectedFile, profile_id: id, caption: this.state.caption}
-        axios.post(API_ROOT(`/posts`), fd).then(console.log)
-    }
-    
+
+        let data = new FormData()
+        data.append('photo', this.state.selectedFile)
+        data.append('profile_id', id)
+        data.append('caption', this.state.caption)
+
+        let res = await axios.post(API_ROOT(`/posts`), data)
+
+        this.setState({post: res})
+}
+
 
     render() {
         return (
@@ -37,6 +48,9 @@ export default class AddMedia extends Component {
                     <input type="text" value={this.state.caption} name="caption" onChange={this.handleCaption}/>
                     <button type="submit">Submit Post</button>
                 </form>
+                <div>
+                    {this.state.post && <img src={this.state.post.data.img_url} /> }
+                </div>
             </div>
         )
     }

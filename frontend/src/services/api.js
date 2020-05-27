@@ -55,8 +55,16 @@ const getPosts = (profileID) => {
     // console.log(res)
     return res.json()
   })
-  
 }
+
+// const getPost = (postID) => {
+//   return fetch(API_ROOT(`/get_posts/${profileID}`), {
+//     headers: headers()
+//   }).then(res => {
+//     // console.log(res)
+//     return res.json()
+//   })
+// }
 
 const getFollowers = (profileID) => {
   return fetch(API_ROOT(`/get_followers/${profileID}`), {

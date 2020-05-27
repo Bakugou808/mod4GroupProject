@@ -11,13 +11,12 @@ class Navbar extends Component {
     }
 
     render() {
-        console.log(this.props)
         return (
             <nav className="nav">
                <Link className="logo-container" to="/">
                    {/* put logo here  */}
                    logo img
-               </Link>
+               </Link> 
                 { this.props.user.name? <Link to="/gallery" className="gallery">
                     profile img
                 </Link> : null 
