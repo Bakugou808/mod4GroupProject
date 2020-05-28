@@ -20,7 +20,8 @@ class App extends React.Component {
       auth: {
         user: {}
       },
-      profile: {}
+      profile: {},
+      addcss: ''
     };
   }
 
@@ -56,16 +57,20 @@ class App extends React.Component {
     this.setState({profile: passedProfile})
   }
   
+  onClick = (name) => {
+    this.setState({addcss: name})
+  }
+
   render() {
     const {user} = this.state.auth
     const {profiles} = user
     return (
       <div>
-          <Navbar profile={this.state.profile} user={this.state.auth.user} onLogout={this.logout} />
+          <Navbar onClick={this.onClick} profile={this.state.profile} user={this.state.auth.user} onLogout={this.logout} />
             <Route exact path="/" render={props => <Landingpage {...props} onSignup={this.login} onLogin={this.login}/> } />
             <Route exact path='/profiles' render={props => <Homepage {...props} user={user} onLogout={this.logout} />}/>
             <Route exact path='/gallery' render={props => <Gallery {...props} user={user} /> } />
-            <Route path={`/profiles/:id`}  render={props => <Profile {...props} setProfile={this.setProfile}/>} />
+            <Route path={`/profiles/:id`}  render={props => <Profile {...props} class={this.state.addcss} setProfile={this.setProfile}/>} />
             
       </div>
     );

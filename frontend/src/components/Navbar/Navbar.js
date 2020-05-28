@@ -3,16 +3,35 @@ import { Route, Navlink, Link, withRouter } from "react-router-dom";
 
 class Navbar extends Component {
 
+    state = {
+        flag: true
+    }
+
     onLogout = () => {
         const {onLogout} = this.props 
         onLogout()
         this.props.history.push("/")
     }
 
+    handleClick = () => {
+        if(this.state.flag){
+            this.props.onClick('active')
+            this.setState({flag: false})
+        } else {
+            this.props.onClick('')
+            this.setState({flag: true})
+        }
+    }
+
     render() {
         return (
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
-               <Link className="navbar-brand" to="/">
+                <div>
+                    <button onClick={this.handleClick} type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-align-left"></i>
+                    </button>
+                </div>
+               <Link className="navbar-brand ml-1" to="/">
                   Instaclone
                </Link> 
                 { this.props.user.name? <div onClick={this.handleClick} className="gallery mx-auto">
@@ -21,7 +40,7 @@ class Navbar extends Component {
                 }
                 <div className="options">
                 {
-                    this.props.user.name ? <div className="option" onClick={this.onLogout}>SIGN OUT</div> : null
+                    this.props.user.name ? <button className="option btn btn-light" onClick={this.onLogout}>SIGN OUT</button> : null
                 }           
                 </div>
             </nav>

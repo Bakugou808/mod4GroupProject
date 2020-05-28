@@ -56,11 +56,11 @@ export default class Comments extends Component {
         const {comment, comments, render} = this.state 
         return (
             <div>
-                <button type="button" onClick={this.handleRenderComments}>Comments...</button>
+                <div className="comments my-2 ml-1" style={{cursor: 'pointer', color: 'teal'}} onClick={this.handleRenderComments}>Comments...</div>
                  {render && this.renderComments()}
 
                  <form onSubmit={this.addComment}>
-                     <label >Add Comment +</label>
+                     <label className="ml-1">Add Comment +</label>
                      <input type="text" name="comment" value={comment} onChange={this.handleChange}/>
                  </form>
             </div>
