@@ -31,14 +31,16 @@ export default class Image extends Component {
     render() {
         const {img_url, caption, created_at, likes, post_id, liker_id} = this.props
         return (
-            <div className={"image"}>
-                <img src={img_url} />
-                <br/>                
-
+            <div className="image">
+                <img class="card-img-top"  style={{width: 300, height: 300}} src={img_url} />
+                <br/>
+                {/* {img_url && <Likes likes={likes} post_id={post_id} liker_id={liker_id} type={"Post"}/>} */}
+                
+                <div className="card-body">
                 {caption}
                 <br/>
                 {this.renderDate()}
-                
+                </div>
 
             </div>
         )

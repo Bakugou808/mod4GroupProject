@@ -23,10 +23,16 @@ import Stats from './Stats'
             this.setState({profile: profile})
             this.getFeed(profile.id)
             })
+// =======
+//         api.profile.getCurrentProfile(this.props.match.params.id).then(profile => {
+//             this.setState({profile: profile})
+//             this.props.setProfile(profile)
+//         })
     }
 
     getFeed = (id) => {
         console.log(id, "in getfeed")
+        api.profile.getFeed(id).then(feed => this.setState({feed: feed}))
     }
     
 
