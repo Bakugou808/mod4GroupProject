@@ -18,8 +18,12 @@ import Stats from './Stats'
     }
 
     componentDidMount(){
-        api.profile.getCurrentProfile(this.props.match.params.id).then(profile => this.setState({profile: profile}))
+        api.profile.getCurrentProfile(this.props.match.params.id).then(profile => {
+            this.setState({profile: profile})
+            this.props.setProfile(profile)
+        })
     }
+
 
 
     
@@ -42,7 +46,7 @@ import Stats from './Stats'
                 <Route exact path={`${match.url}/activity`} render={props => <Activity {...props} profile={profile} /> } />
                 <Route exact path={`${match.url}/stats`} render={props => <Stats {...props} profile={profile} /> } />
 
-
+                
             </Fragment>
          
          

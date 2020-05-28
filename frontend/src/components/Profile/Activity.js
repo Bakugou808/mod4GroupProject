@@ -10,8 +10,7 @@ export default class Activity extends Component {
         thisMonthsFriendPosts: [],
     }
 
-    componentDidMount(){
-        
+    componentDidMount(){ 
         let id = this.props.match.url.split('/')[2]
         api.followers.getFollowRequests(id).then(followers => this.setState({
             Requests: followers

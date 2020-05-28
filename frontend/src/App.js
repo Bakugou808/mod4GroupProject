@@ -18,8 +18,9 @@ class App extends React.Component {
     super();
     this.state = {
       auth: {
-        user: {}
-      }
+        user: {}, 
+      },
+      profile: {}
     };
   }
 
@@ -50,17 +51,21 @@ class App extends React.Component {
     localStorage.removeItem("token");
     this.setState({ auth: { user: {} } });
   };
+
+  setProfile = (passedProfile) => {
+    this.setState({profile: passedProfile})
+  }
   
   render() {
     const {user} = this.state.auth
     const {profiles} = user
     return (
       <div>
-          <Navbar user={this.state.auth.user} onLogout={this.logout} />
+          <Navbar profile={this.state.profile} user={this.state.auth.user} onLogout={this.logout} />
             <Route exact path="/" render={props => <Landingpage {...props} onSignup={this.login} onLogin={this.login}/> } />
             <Route exact path='/home' render={props => <Homepage {...props} user={user} onLogout={this.logout} />}/>
             <Route exact path='/gallery' render={props => <Gallery {...props} user={user} /> } />
-            <Route path={`/profiles/:id`}  render={props => <Profile {...props}/>} />
+            <Route path={`/profiles/:id`}  render={props => <Profile {...props} setProfile={this.setProfile}/>} />
             
       </div>
     );

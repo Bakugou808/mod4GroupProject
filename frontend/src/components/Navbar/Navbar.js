@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react'
 import { Route, Navlink, Link, withRouter } from "react-router-dom";
-import './Navbar.scss'
 
 class Navbar extends Component {
 
@@ -12,14 +11,13 @@ class Navbar extends Component {
 
     render() {
         return (
-            <nav className="nav">
-               <Link className="logo-container" to="/">
-                   {/* put logo here  */}
-                   logo img
+            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+               <Link className="navbar-brand" to="/">
+                  Instaclone
                </Link> 
-                { this.props.user.name? <Link to="/gallery" className="gallery">
-                    profile img
-                </Link> : null 
+                { this.props.user.name? <div onClick={this.handleClick} className="gallery mx-auto">
+                   <img style={{width: 50, height: 50, borderRadius: '50%'}} src={this.props.profile.img_file} />
+                </div> : null 
                 }
                 <div className="options">
                 {
