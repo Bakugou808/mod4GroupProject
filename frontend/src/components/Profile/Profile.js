@@ -46,7 +46,7 @@ import Stats from './Stats'
                 <Route exact path={`${match.url}/activity`} render={props => <Activity {...props} profile={profile} /> } />
                 <Route exact path={`${match.url}/stats`} render={props => <Stats {...props} profile={profile} /> } />
 
-                <button className="btn btn-primary">Add Friend</button>
+                
             </Fragment>
          
          
