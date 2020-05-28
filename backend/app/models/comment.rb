@@ -11,5 +11,15 @@ class Comment < ApplicationRecord
     profiles  
   end
 
+  def getLikers
+    
+
+    likes = self.likes
+    sorted = likes.order('created_at DESC')
+    
+    profiles = sorted.map{|like| Profile.find(like.profile_id)}
+    
+    profiles 
+  end 
 
 end
