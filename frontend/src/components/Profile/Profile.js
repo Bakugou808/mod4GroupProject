@@ -32,7 +32,7 @@ import Stats from './Stats'
 
     getFeed = (id) => {
         console.log(id, "in getfeed")
-        api.profile.getFeed(id).then(feed => this.setState({feed: feed}))
+        // api.profile.getFeed(id).then(feed => this.setState({feed: feed}))
     }
     
 
@@ -46,6 +46,8 @@ import Stats from './Stats'
             <Fragment> 
                 <div>
                     {username && `${username}'s Profile`}
+                    <br/>
+                    this is where i would display a feed
                 </div>
                 <div className="side_menu_div">
                     <SideMenu match={match}/> 
