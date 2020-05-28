@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { Route, Navlink, Link } from "react-router-dom";
-
+import './Profile.scss'
 import { api } from '../../services/api'
 import SideMenu from './SideMenu'
 import Search from './Search'
@@ -31,6 +31,7 @@ import ViewOtherGallery from '../Gallery/ViewOtherGallery'
             this.setState({profile: profile},this.props.setProfile(profile))
             this.props.setProfile(profile)
 
+
             // this.getFeed(profile.id)
         })
     }
@@ -42,31 +43,29 @@ import ViewOtherGallery from '../Gallery/ViewOtherGallery'
         const {profile} = this.state
         const {username} = this.state.profile
         const {match} = this.props
+        
         return (
-          
-            <Fragment> 
-                <div>
-                    {username && `${username}'s Profile`}
-                    <br/>
-                </div>
+            <div className="wrapper" > 
+
                 <div className="side_menu_div">
-                    <SideMenu match={match}/> 
+                    <SideMenu class={this.props.class} match={match}/> 
                 </div>
-                <Route exact path={`${match.url}/search`} render={(props) => <Search {...props} userProfileID={match.params.id}/>} />
-                <Route exact path={`${match.url}/gallery`} render={props => <Gallery {...props} userProfileID={match.params.id} profile={profile} /> } />
-                <Route exact path={`${match.url}/addMedia`} render={props => <AddMedia {...props} userProfileID={match.params.id} profile={profile} /> } />
-                <Route exact path={`${match.url}/activity`} render={props => <Activity {...props} userProfileID={match.params.id} profile={profile} /> } />
-                <Route exact path={`${match.url}/stats`} render={props => <Stats {...props} userProfileID={match.params.id} profile={profile} /> } />
-                <Route exact path={`${match.url}`} render={props => <Feed {...props} userProfileID={match.params.id} profile={profile} />} />
-                <Route exact path={`${match.url}/view/:viewProfileId`}  render={props => <ViewOtherGallery {...props} userProfileID={match.params.id} />} />
-                <div>
-                    
+                <div className="page">
+                   <div className="title my-2">
+                        {username && `${username}'s Profile`}
+                   </div>
+
+                  <Route exact path={`${match.url}/search`} render={(props) => <Search {...props} userProfileID={match.params.id}/>} />
+                  <Route exact path={`${match.url}/gallery`} render={props => <Gallery {...props} userProfileID={match.params.id} profile={profile} /> } />
+                  <Route exact path={`${match.url}/addMedia`} render={props => <AddMedia {...props} userProfileID={match.params.id} profile={profile} /> } />
+                  <Route exact path={`${match.url}/activity`} render={props => <Activity {...props} userProfileID={match.params.id} profile={profile} /> } />
+                  <Route exact path={`${match.url}/stats`} render={props => <Stats {...props} userProfileID={match.params.id} profile={profile} /> } />
+                  <Route exact path={`${match.url}`} render={props => <Feed {...props} userProfileID={match.params.id} profile={profile} />} />
+                  <Route exact path={`${match.url}/view/:viewProfileId`}  render={props => <ViewOtherGallery {...props} userProfileID={match.params.id} />} />
+
                 </div>
 
-            </Fragment>
-         
-         
-            
+            </div>
         )
     }
 }

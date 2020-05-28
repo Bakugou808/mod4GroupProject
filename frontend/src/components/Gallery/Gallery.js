@@ -21,14 +21,23 @@ export default class Gallery extends Component {
     renderPosts = () => {
         const {posts} = this.state
         const {userProfileID} = this.props 
-        return posts.map(post => <PostContainer key={post.id} post={post} userProfileID={userProfileID} deletePost={this.deletePost} /> )
+
+        return posts.map(post => {
+            return (
+                <div className="col-md my-3">
+                    <PostContainer key={post.id} post={post} userProfileID={userProfileID} deletePost={this.deletePost} /> 
+                </div>
+                )
+        })
     }
     
 
     render() {
         return (
-            <div>
-                {this.renderPosts()}
+            <div className="container">
+                <div className="row">
+                    {this.renderPosts()}
+                </div>
             </div>
         )
     }

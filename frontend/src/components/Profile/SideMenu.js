@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Route, Navlink, Link } from "react-router-dom";
 import { api } from '../../services/api'
+import './Sidemenu.scss'
 import Search from './Search'
 
 export default class SideMenu extends Component {
@@ -9,14 +10,14 @@ export default class SideMenu extends Component {
     render() {
         const {match} = this.props
         return (
-            <div className="sideMenu">
+            <div id="sidebar" className={this.props.class}>
                 <Link to={`${match.url}`}>Home</Link>
                 {/* <Link to={`/home`}>Home</Link> */}
 
                 <br/>
                 <Link to={`${match.url}/search`}>Search</Link>
                 <br/>
-                <Link to={`${match.url}/addMedia`}>+</Link>
+                <Link className="plus" to={`${match.url}/addMedia`}>+</Link>
                 <br/>
                 <Link to={`${match.url}/activity`}>Heart</Link>
                 <br/>
