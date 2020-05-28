@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { Route, Navlink, Link } from "react-router-dom";
-
+import './Profile.scss'
 import { api } from '../../services/api'
 import SideMenu from './SideMenu'
 import Search from './Search'
@@ -22,12 +22,8 @@ import Stats from './Stats'
         api.profile.getCurrentProfile(this.props.match.params.id).then(profile =>{
             this.setState({profile: profile})
             this.getFeed(profile.id)
+            this.props.setProfile(profile)
             })
-// =======
-//         api.profile.getCurrentProfile(this.props.match.params.id).then(profile => {
-//             this.setState({profile: profile})
-//             this.props.setProfile(profile)
-//         })
     }
 
     getFeed = (id) => {
@@ -43,23 +39,26 @@ import Stats from './Stats'
         const {match} = this.props
         return (
           
-            <Fragment> 
-                <div>
-                    {username && `${username}'s Profile`}
-                    <br/>
-                    this is where i would display a feed
-                </div>
+            <div className="wrapper"> 
+                
                 <div className="side_menu_div">
-                    <SideMenu match={match}/> 
+                    <SideMenu class={this.props.class} match={match}/> 
                 </div>
+                <div className="page">
+                    <div className="title my-2">
+                        {username && `${username}'s Profile`}
+                        <br/>
+                        this is where i would display a feed
+                    </div>
+                
                 <Route exact path={`${match.url}/search`} render={(props) => <Search {...props}/>} />
                 <Route exact path={`${match.url}/gallery`} render={props => <Gallery {...props} profile={profile} /> } />
                 <Route exact path={`${match.url}/addMedia`} render={props => <AddMedia {...props} profile={profile} /> } />
                 <Route exact path={`${match.url}/activity`} render={props => <Activity {...props} profile={profile} /> } />
                 <Route exact path={`${match.url}/stats`} render={props => <Stats {...props} profile={profile} /> } />
+                </div>
 
-
-            </Fragment>
+            </div>
          
          
             
