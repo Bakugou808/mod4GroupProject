@@ -20,7 +20,7 @@ export default class PostContainer extends Component {
             <div>
                 <Image img_url={img_url} caption={caption} created_at={created_at} likes={likes} liker_id={profile_id} post_id={id}/>
 
-                <Likes post_id={id} liker_id={profile_id} type={"Post"} />
+                <Likes id={id} liker_id={profile_id} type={"Post"} />
 
                 
                 

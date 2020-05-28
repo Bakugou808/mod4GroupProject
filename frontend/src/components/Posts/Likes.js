@@ -14,11 +14,13 @@ export default class Likes extends Component{
     }
 
     componentDidMount(){
-        const {post_id, type} = this.props
-        // api.posts.getPost(post_id).then(res=> this.setState({post: res}))
-        let body = {likable_type: type, likable_id: post_id}
+        const {id, type} = this.props
+        // api.posts.getPost(id).then(res=> this.setState({post: res}))
+        let body = {likable_type: type, likable_id: id}
         api.likes.getLikes(body).then(res=> this.setState({likes: res}))
-        api.likes.getLikers(post_id).then(res=> this.setState({likers:  res}))
+        
+        type === "Post" ? api.likes.getLikers(id).then(res=> this.setState({likers: res})) : api.likes.getCommentLikers(id).then(res=> this.setState({likers: res}))
+
 
     }
 
@@ -45,11 +47,12 @@ export default class Likes extends Component{
     }
     
      addLike = () => {
-        const {liker_id, post_id, type} = this.props
+        const {liker_id, id, type} = this.props
         
-        let body = {profile_id: liker_id, likable_type: type, likable_id: post_id}
+        let body = {profile_id: liker_id, likable_type: type, likable_id: id}
         api.likes.addLike(body).then(like => this.setState(prev => ({likes: [...prev.likes, like]})))
-        api.likes.getLikers(post_id).then(res=> this.setState({likers: res}))
+        // api.likes.getLikers(id).then(res=> this.setState({likers: res}))
+        type === "Post" ? api.likes.getLikers(id).then(res=> this.setState({likers: res})) : api.likes.getCommentLikers(id).then(res=> this.setState({likers: res}))
     }
     
 

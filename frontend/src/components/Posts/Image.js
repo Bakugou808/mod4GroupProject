@@ -33,9 +33,7 @@ export default class Image extends Component {
         return (
             <div className={"image"}>
                 <img src={img_url} />
-                <br/>
-                {/* {img_url && <Likes likes={likes} post_id={post_id} liker_id={liker_id} type={"Post"}/>} */}
-                
+                <br/>                
 
                 {caption}
                 <br/>
