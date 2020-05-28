@@ -9,10 +9,6 @@ export default class Search extends Component {
         selectedPost: []
     }
 
-    refreshMount = () => {
-        this.componentDidMount()
-    }
-
     componentDidMount() {
         fetch('http://localhost:3000/posts')
         .then(res => res.json())
@@ -33,7 +29,7 @@ export default class Search extends Component {
     }
 
     renderPost = () => {
-        this.state.selectedPost.map(post => <PostContainer refreshMount={this.refreshMount} post={post} />)
+        return this.state.selectedPost.map(post => <PostContainer post={post} />)
     }
 
     render() {
@@ -45,7 +41,7 @@ export default class Search extends Component {
                     autoFocus
                     onSelect={record => this.onSelect(record)}
                 />
-                {this.renderPost()}
+                {this.state.selectedPost && this.renderPost()}
             </div>
         )
     }
