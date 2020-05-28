@@ -4,6 +4,8 @@ class Like < ApplicationRecord
   # maybe bypass validate on the frontend, but just to be secure 
   # delegate: profile, to: :posts
 
-
+  def self.findLikes(id, type)
+    Like.where(likable_type: type, likable_id: id)
+  end
 
 end

@@ -11,9 +11,8 @@ class PostsController < ApplicationController
     end 
 
     def profiles_posts
-        
         posts = Post.find_posts(params[:profile_id])
-        render json: posts, include: ['comments', 'likes']
+        render json: posts, include: ['comments', 'likes', 'profile']
     end 
   
     def create 
@@ -21,17 +20,9 @@ class PostsController < ApplicationController
         post = Post.new(post_params)
         
         if post.save 
-            # post.media_file.attach(params[:media_file])
             url = url_for(post.photo) 
             post.img_url = url
             
-            # post.formatUrl
-
-            # image = MiniMagick::Image.new(url)
-            # image.resize "500x500"
-            # post.img_url = url
-
-
             post.save
             
             render json: post
@@ -40,11 +31,24 @@ class PostsController < ApplicationController
         end 
     end 
 
-    # def findLikers
-    #     byebug
-    #     likers = @post.getLikers
-    #     render json: likers
-    # end
+    def findLikers
+        post = Post.find(params[:post_id])
+        likers = post.getLikers
+        render json: likers
+    end
+
+    def get_comments 
+        post = Post.find(params[:post_id])
+        comments = post.comments 
+        render json: comments, include: ['profile']
+        
+    end
+
+    def get_commentors
+        commentors = Comment.get_commentors(params[:post_id])
+        render json: commentors
+    end
+ 
 
     def update 
         if @post.update(post_params)

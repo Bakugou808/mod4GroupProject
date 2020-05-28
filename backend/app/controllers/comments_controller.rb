@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
     def create 
         comment = Comment.new(comment_params)
         if comment.save 
-            render json: comment 
+            render json: comment, include:['profile']
         # else
         end 
     end 
@@ -38,6 +38,6 @@ class CommentsController < ApplicationController
     end 
 
     def comment_params
-        params.require(:comment).permit(:post_id, :profile_id, :comment)
+        params.permit(:post_id, :profile_id, :comment)
     end 
 end
