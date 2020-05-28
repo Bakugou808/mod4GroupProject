@@ -14,12 +14,14 @@ class Post < ApplicationRecord
   def getLikers
     likes = self.likes
     sorted = likes.order('created_at DESC')
-    
     profiles = sorted.map{|like| Profile.find(like.profile_id)}
-    
     profiles 
   end 
 
+  def self.getFeed 
+    # find all posts within the past 2 weeks 
+    # render that back
+  end
 
   # def formatUrl
   #   img = self.img_url
