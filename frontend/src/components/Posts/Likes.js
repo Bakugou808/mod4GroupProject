@@ -1,64 +1,43 @@
-import React, { Component } from 'react'
-// import React from 'react'
+// import React, { Component } from 'react'
+import React from 'react'
 
 import { api } from '../../services/api'
 
-export default class Likes extends Component{
+export default function Likes (props){
     // presentational 
     // let likeCount = props.likes.length 
     // const [likes, setLikes] = React.useState(likeCount)
 
-    state = {
-        likes: null,
-        likers: null
-    }
 
-    componentDidMount(){
-        const {post_id, type} = this.props
-        // api.posts.getPost(post_id).then(res=> this.setState({post: res}))
-        let body = {likable_type: type, likable_id: post_id}
-        api.likes.getLikes(body).then(res=> this.setState({likes: res}))
-        api.likes.getLikers(post_id).then(res=> this.setState({likers:  res}))
+    
 
-    }
-
-     renderLikeUi = () => {
-        const {likes, likers} = this.state 
+    const renderLikeUi = () => {
+        const {likes} = props 
         
         let count = likes.length
-        
-        let recentLikers = []
-
-        if (likers.length ===1){
-            recentLikers = [likers[0].username, '...']
-        }else if (likers.length === 2){
-            recentLikers = [likers[0].username, likers[1].username, "..."]
-        } else if (likers.length >2){
-            recentLikers= [likers[0].username, likers[1].username, likers[2].username, '...' ]
-        }  
+        let recentLikers = ["jimmy", "kaya", "docnani"]
         let ui = <div>
-            <button type="button" onClick={this.addLike}>{count} Likes!</button>
+            <button type="button" onClick={addLike}>{count} Likes!</button>
                      { }
                     {recentLikers.join(', ')}
                 </div>
         return ui
     }
     
-     addLike = () => {
-        const {liker_id, post_id, type} = this.props
+    const addLike = () => {
+        const {liker_id, post_id, type, refreshMount} = props
         
         let body = {profile_id: liker_id, likable_type: type, likable_id: post_id}
-        api.likes.addLike(body).then(like => this.setState(prev => ({likes: [...prev.likes, like]})))
-        api.likes.getLikers(post_id).then(res=> this.setState({likers: res}))
+        api.likes.addLike(body)
+        refreshMount()
     }
     
 
-    render() {
-        const {likes, likers} = this.state
+    // render() {
         return (
             <div className="image_likes">
-                {(likes&&likers) && this.renderLikeUi()}
+                {renderLikeUi()}
             </div>
         )
-    }
+    // }
 }

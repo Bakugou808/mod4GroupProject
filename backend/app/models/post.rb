@@ -11,15 +11,10 @@ class Post < ApplicationRecord
     posts
   end
 
-  def getLikers
-    likes = self.likes
-    sorted = likes.order('created_at DESC')
+  # def getLikers
+  #   likersProfiles = []
     
-    profiles = sorted.map{|like| Profile.find(like.profile_id)}
-    
-    profiles 
-  end 
-
+  # end 
 
   # def formatUrl
   #   img = self.img_url

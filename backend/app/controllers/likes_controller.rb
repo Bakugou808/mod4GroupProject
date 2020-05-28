@@ -11,6 +11,7 @@ class LikesController < ApplicationController
     end 
 
     def create
+        
         like = Like.new(like_params)
         if like.save 
             render json: like 
@@ -19,15 +20,10 @@ class LikesController < ApplicationController
         end 
     end 
 
-    def get_likes 
-        likes = Like.findLikes(params[:likable_id],params[:likable_type])
-        render json: likes
-    end
-
-
     def update 
         if @like.update(like_params)
             render json: @like 
+        # else 
         end 
     end 
 

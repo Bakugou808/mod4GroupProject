@@ -11,10 +11,7 @@ Rails.application.routes.draw do
     get '/get_posts/:profile_id', to: 'posts#profiles_posts'
     get '/get_followers/:profile_id', to: 'followers#profiles_followers'
     get '/get_follower_requests/:profile_id', to: 'followers#profiles_follower_requests'
-    get '/get_likers/:post_id', to: 'posts#findLikers'
-    get '/get_likes/:likable_type/:likable_id', to: 'likes#get_likes'
-    get '/get_commentors/:post_id', to: 'posts#get_commentors'
-    get '/get_comments/:post_id', to: 'posts#get_comments'
+    # get '/find_likers/:post_id', to 'posts#findLikers'
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

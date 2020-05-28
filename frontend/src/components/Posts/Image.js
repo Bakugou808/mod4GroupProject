@@ -13,7 +13,7 @@ export default class Image extends Component {
 
     componentDidMount(){
         const {post_id} = this.props 
-        // api.posts.getLikers(post_id).then(res=> this.setState({likers: res}))
+        api.posts.getLikers(post_id).then(res=> this.setState({likers: res}))
     }
 
     renderDate = () => {

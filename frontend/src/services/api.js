@@ -92,14 +92,6 @@ const getUser = (profileID) => {
   })
 }
 
-const getLikes = (body) => {
-  return fetch(API_ROOT(`/get_likes/${body.likable_type}/${body.likable_id}`), {
-    headers: headers()
-  }).then(res => {
-    return res.json()
-  })
-}
-
 
 const addLike = (body) => {
   return fetch(API_ROOT(`/likes`), {
@@ -113,64 +105,8 @@ const addLike = (body) => {
 }
 
 const getLikers = (postID) => {
-  return fetch(API_ROOT(`/get_likers/${postID}`), {
+  return fetch(API_ROOT(`/find_likers/${postID}`), {
     headers: headers()
-  }).then(res => {
-    // console.log(res)
-    return res.json()
-  })
-}
-
-const getComments = (postID) => {
-  return fetch(API_ROOT(`/get_comments/${postID}`), {
-    headers: headers()
-  }).then(res => {
-    return res.json()
-  })
-}
-
-
-const addComment = (body) => {
-  return fetch(API_ROOT(`/comments`), {
-    method: "POST",
-    headers: headers(),
-    body: JSON.stringify(body)
-  }).then(res => {
-    // console.log(res.json())
-    return res.json()
-  })
-}
-
-const getCommentors = (postID) => {
-  return fetch(API_ROOT(`/get_commentors/${postID}`), {
-    headers: headers()
-  }).then(res => {
-    // console.log(res)
-    return res.json()
-  })
-}
-
-const getProfile = (profileID) => {
-  return fetch(API_ROOT(`/profiles/${profileID}`), {
-    headers: headers()
-  }).then(res => {
-    // console.log(res)
-    return res.json()
-  })
-}
-
-const deletePost = (postID) => {
-  return fetch(API_ROOT(`/posts/${postID}`), { method: "DELETE",
-    headers: headers()
-  }).then(res => {
-    // console.log(res)
-    return res.json()
-  })
-}
-
-const deleteComment = (commentID) => {
-  return fetch(API_ROOT(`/comments/${commentID}`), { method: "DELETE",
-  headers: headers()
   }).then(res => {
     // console.log(res)
     return res.json()
@@ -187,12 +123,11 @@ export const api = {
     },
     profile: {
       getCurrentProfile,
-      getProfile,
     },
     posts: {
       getPosts,
       getPost,
-      deletePost,
+      getLikers,
     },
     followers: {
       getFollowers,
@@ -200,13 +135,5 @@ export const api = {
     },
     likes: {
       addLike,
-      getLikes,
-      getLikers,
-    },
-    comments: {
-      addComment,
-      getComments,
-      // getCommentors,
-      deleteComment,
     }
 };

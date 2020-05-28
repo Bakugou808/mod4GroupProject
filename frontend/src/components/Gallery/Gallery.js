@@ -7,11 +7,11 @@ export default class Gallery extends Component {
     state = {
         posts: [],
     }
-    
-    deletePost = (postID) => {
-        api.posts.deletePost(postID)
-        this.setState(prev => ({posts: prev.posts.filter(post => post.id != postID)}))
+
+    refreshMount = () => {
+        this.componentDidMount()
     }
+    
 
     componentDidMount(){
         let id = this.props.match.url.split('/')[2]
@@ -20,7 +20,7 @@ export default class Gallery extends Component {
 
     renderPosts = () => {
         const {posts} = this.state
-        return posts.map(post => <PostContainer key={post.id} post={post} deletePost={this.deletePost} /> )
+        return posts.map(post => <PostContainer key={post.id} post={post} refreshMount={this.refreshMount}/> )
     }
     
 
