@@ -22,17 +22,15 @@ class ProfilesController < ApplicationController
     def show
         render json: @profile, include: [ 'posts', 'followers']
     end 
-  
+
     def create 
+        
         profile = Profile.new(profile_params)
         if profile.save 
-            profile.avatar.attach(params[:avatar])
-            url = url_for(profile.avatar) 
-            profile.img_file = url
-            profile.save
             render json: profile 
-        else    
-            render json: 'Failed to save profile'
+        # else 
+        #     flash[:error_messages] = profile.errors.full_messages 
+        #     render json: flash[:error_messages]
         end
     end 
 
@@ -58,6 +56,6 @@ class ProfilesController < ApplicationController
     end
 
     def profile_params
-        params.permit(:user_id, :username, :description, :avatar, :last_seen)
+        params.require(:profile).permit(:user_id, :username, :description, :img_file, :last_seen)
     end
 end

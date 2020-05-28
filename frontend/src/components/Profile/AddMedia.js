@@ -16,9 +16,11 @@ export default class AddMedia extends Component {
 
     selectedFileHandler = (event) => {
         this.setState({selectedFile: event.target.files[0]})
+
+
     }
     
-    fileUploadHandler = async (event) => {
+     fileUploadHandler = async (event) => {
         event.preventDefault()
         const API_ROOT = (path)=> `http://localhost:3000${path}`
         
@@ -32,7 +34,7 @@ export default class AddMedia extends Component {
         let res = await axios.post(API_ROOT(`/posts`), data)
 
         this.setState({post: res})
-    }
+}
 
 
     render() {

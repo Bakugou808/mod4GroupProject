@@ -9,10 +9,6 @@ class Navbar extends Component {
         this.props.history.push("/")
     }
 
-    handleClick = event => {
-        this.props.history.push(`/profiles/${this.props.user.id}/gallery`)
-    }
-
     render() {
         return (
             <nav className="navbar navbar-expand-lg navbar-light bg-light">

@@ -10,6 +10,7 @@ import Activity from './Activity'
 import Stats from './Stats'
 
 
+
  class Profile extends Component {
 
     state = {
@@ -30,7 +31,6 @@ import Stats from './Stats'
         const {profile} = this.state
         const {username} = this.state.profile
         const {match} = this.props
-        // console.log(profile)
         return (
           
             <Fragment> 

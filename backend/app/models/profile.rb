@@ -5,5 +5,4 @@ class Profile < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, through: :posts 
   # has_many :comments, through: :posts 
-  has_one_attached :avatar
 end
