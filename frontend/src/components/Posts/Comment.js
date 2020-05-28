@@ -1,9 +1,9 @@
 import React from 'react'
+import Likes from './Likes'
 
-export default function Comment({comment, commentorProfile, deleteComment}) {
+export default function Comment({comment, commentorProfile, profileID, deleteComment}) {
 
     const handleDeleteComment = () => {
-        
         deleteComment(comment.id)
     }
     
@@ -12,6 +12,7 @@ export default function Comment({comment, commentorProfile, deleteComment}) {
         <div>
             {/* {commentorProfile && <p>{comment.comment} - {commentorProfile.username}</p>} */}
             <p>{comment && comment.comment} - {commentorProfile && commentorProfile.username}</p>
+            <Likes type={"Comment"} id={comment.id} liker_id={profileID}/>
             <button type="button" onClick={handleDeleteComment}>Delete Comment</button>
         </div>
     )

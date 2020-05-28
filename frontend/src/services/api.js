@@ -93,6 +93,7 @@ const getUser = (profileID) => {
 }
 
 const getLikes = (body) => {
+  
   return fetch(API_ROOT(`/get_likes/${body.likable_type}/${body.likable_id}`), {
     headers: headers()
   }).then(res => {
@@ -114,6 +115,15 @@ const addLike = (body) => {
 
 const getLikers = (postID) => {
   return fetch(API_ROOT(`/get_likers/${postID}`), {
+    headers: headers()
+  }).then(res => {
+    // console.log(res)
+    return res.json()
+  })
+}
+
+const getCommentLikers = (commentID) => {
+  return fetch(API_ROOT(`/get_comment_likers/${commentID}`), {
     headers: headers()
   }).then(res => {
     // console.log(res)
@@ -202,6 +212,7 @@ export const api = {
       addLike,
       getLikes,
       getLikers,
+      getCommentLikers,
     },
     comments: {
       addComment,

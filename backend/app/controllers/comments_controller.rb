@@ -18,6 +18,12 @@ class CommentsController < ApplicationController
         end 
     end 
 
+    def get_likers
+        comment = Comment.find(params[:comment_id])
+        likers = comment.getLikers
+        render json: likers
+    end 
+
     def update 
         if @comment.update(comment_params)
             render json: @comment 
