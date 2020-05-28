@@ -36,8 +36,8 @@ export default class Comments extends Component {
     
     renderComments = () => {
         const {comments} = this.state 
-        const {profile} = this.props 
-        return comments.map(comment => <Comment key={comment.id} comment={comment} commentorProfile={comment.profile} deleteComment={this.deleteComment}/>)
+        const {profile_id} = this.props 
+        return comments.map(comment => <Comment key={comment.id} comment={comment} commentorProfile={comment.profile} profileID={profile_id} deleteComment={this.deleteComment}/>)
     }
     handleRenderComments = () => {
         this.setState(prev => ({render: !prev.render}))
