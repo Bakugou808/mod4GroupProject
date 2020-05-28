@@ -14,13 +14,21 @@ import Stats from './Stats'
  class Profile extends Component {
 
     state = {
-        profile: {}
-    }
+        profile: {},
+        feed: [],
+    } 
 
     componentDidMount(){
-        api.profile.getCurrentProfile(this.props.match.params.id).then(profile => this.setState({profile: profile}))
+        api.profile.getCurrentProfile(this.props.match.params.id).then(profile =>{
+            this.setState({profile: profile})
+            this.getFeed(profile.id)
+            })
     }
 
+    getFeed = (id) => {
+        console.log(id, "in getfeed")
+    }
+    
 
     
     render() {
