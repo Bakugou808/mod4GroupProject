@@ -25,12 +25,9 @@ export default class PostContainer extends Component {
             //         </div>
             //     </div>
             <div>
+                {/* need a profile handler component --> display a new route tag that makes a fetch call for that profile's posts, and renders them --> eg. <Route to={profiles/currentprofileID/view/otherprofileID} */}
                 <Image img_url={img_url} caption={caption} created_at={created_at} likes={likes} liker_id={profile_id} post_id={id}/>
-
                 <Likes id={id} liker_id={profile_id} type={"Post"} />
-
-                
-                
                 <Comments post_id={id} profile_id={profile_id}/>
                 <button onClick={this.handleDeletePost}>Delete Post</button>
                 

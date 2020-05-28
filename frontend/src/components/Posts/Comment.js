@@ -13,7 +13,7 @@ export default function Comment({comment, commentorProfile, profileID, deleteCom
             {/* {commentorProfile && <p>{comment.comment} - {commentorProfile.username}</p>} */}
             <p>{comment && comment.comment} - {commentorProfile && commentorProfile.username}</p>
             <Likes type={"Comment"} id={comment.id} liker_id={profileID}/>
-            <button type="button" onClick={handleDeleteComment}>Delete Comment</button>
+            {<button type="button" onClick={handleDeleteComment}>Delete Comment</button>}
         </div>
     )
 }

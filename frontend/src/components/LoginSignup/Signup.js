@@ -30,7 +30,7 @@ export default class Signup extends Component {
                 if (!res.error) {
                   // const updatedState = { ...this.state.auth, user: res };
                   this.props.onSignup(res);
-                  this.props.history.push('/home');
+                  this.props.history.push('/profiles');
                 } else {
                   this.setState({ error: true });
                 }

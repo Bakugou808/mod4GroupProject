@@ -23,6 +23,12 @@ class FollowersController < ApplicationController
         render json: followers
     end
 
+    def get_following
+        
+        following = Follower.get_following(params[:profile_id])
+        render json: following
+    end
+
     def update 
         if @follower.update(follower_params)
             render json:@follower 

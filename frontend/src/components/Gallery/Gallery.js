@@ -14,13 +14,14 @@ export default class Gallery extends Component {
     }
 
     componentDidMount(){
-        let id = this.props.match.url.split('/')[2]
+        let id = this.props.userProfileID
         api.posts.getPosts(id).then(posts => this.setState({posts: posts}))
     }
 
     renderPosts = () => {
         const {posts} = this.state
-        return posts.map(post => <PostContainer key={post.id} post={post} deletePost={this.deletePost} /> )
+        const {userProfileID} = this.props 
+        return posts.map(post => <PostContainer key={post.id} post={post} userProfileID={userProfileID} deletePost={this.deletePost} /> )
     }
     
 

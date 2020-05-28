@@ -8,6 +8,10 @@ import Gallery from '../Gallery/Gallery'
 import AddMedia from './AddMedia'
 import Activity from './Activity'
 import Stats from './Stats'
+import Feed from './Feed'
+import ViewOtherGallery from '../Gallery/ViewOtherGallery'
+
+
 
 
 
@@ -15,25 +19,22 @@ import Stats from './Stats'
 
     state = {
         profile: {},
-        feed: [],
     } 
 
     componentDidMount(){
-        api.profile.getCurrentProfile(this.props.match.params.id).then(profile =>{
-            this.setState({profile: profile})
-            this.getFeed(profile.id)
-            })
-// =======
-//         api.profile.getCurrentProfile(this.props.match.params.id).then(profile => {
-//             this.setState({profile: profile})
-//             this.props.setProfile(profile)
-//         })
+        // api.profile.getCurrentProfile(this.props.match.params.id).then(profile =>{
+        //     this.setState({profile: profile})
+        //     this.getFeed(profile.id)
+        //     })
+
+        api.profile.getCurrentProfile(this.props.match.params.id).then(profile => {
+            this.setState({profile: profile},this.props.setProfile(profile))
+            this.props.setProfile(profile)
+
+            // this.getFeed(profile.id)
+        })
     }
 
-    getFeed = (id) => {
-        console.log(id, "in getfeed")
-        // api.profile.getFeed(id).then(feed => this.setState({feed: feed}))
-    }
     
 
     
@@ -47,17 +48,20 @@ import Stats from './Stats'
                 <div>
                     {username && `${username}'s Profile`}
                     <br/>
-                    this is where i would display a feed
                 </div>
                 <div className="side_menu_div">
                     <SideMenu match={match}/> 
                 </div>
-                <Route exact path={`${match.url}/search`} render={(props) => <Search {...props}/>} />
-                <Route exact path={`${match.url}/gallery`} render={props => <Gallery {...props} profile={profile} /> } />
-                <Route exact path={`${match.url}/addMedia`} render={props => <AddMedia {...props} profile={profile} /> } />
-                <Route exact path={`${match.url}/activity`} render={props => <Activity {...props} profile={profile} /> } />
-                <Route exact path={`${match.url}/stats`} render={props => <Stats {...props} profile={profile} /> } />
-
+                <Route exact path={`${match.url}/search`} render={(props) => <Search {...props} userProfileID={match.params.id}/>} />
+                <Route exact path={`${match.url}/gallery`} render={props => <Gallery {...props} userProfileID={match.params.id} profile={profile} /> } />
+                <Route exact path={`${match.url}/addMedia`} render={props => <AddMedia {...props} userProfileID={match.params.id} profile={profile} /> } />
+                <Route exact path={`${match.url}/activity`} render={props => <Activity {...props} userProfileID={match.params.id} profile={profile} /> } />
+                <Route exact path={`${match.url}/stats`} render={props => <Stats {...props} userProfileID={match.params.id} profile={profile} /> } />
+                <Route exact path={`${match.url}`} render={props => <Feed {...props} userProfileID={match.params.id} profile={profile} />} />
+                <Route exact path={`${match.url}/view/:viewProfileId`}  render={props => <ViewOtherGallery {...props} userProfileID={match.params.id} />} />
+                <div>
+                    
+                </div>
 
             </Fragment>
          

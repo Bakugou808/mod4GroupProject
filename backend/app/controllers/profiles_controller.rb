@@ -43,6 +43,15 @@ class ProfilesController < ApplicationController
         end
     end 
 
+    def get_feed
+        
+        # profile = Profile.find(params[:profile_id])
+        # profile.get_feed
+        
+        feed = Post.getRandomFeed
+        render json: feed, include: ['profile']
+    end
+
     def destroy
         @profile.destroy 
         render json: "Profile Deleted"

@@ -22,4 +22,9 @@ class Follower < ApplicationRecord
     followers 
   end
 
+  def self.get_following(profileID) 
+    following = Follower.where(follower_id: profileID)
+    followingProfiles = following.map{|follow| Profile.find(follow.profile_id)}
+  end
+
 end

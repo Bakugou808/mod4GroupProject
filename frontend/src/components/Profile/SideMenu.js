@@ -11,6 +11,8 @@ export default class SideMenu extends Component {
         return (
             <div className="sideMenu">
                 <Link to={`${match.url}`}>Home</Link>
+                {/* <Link to={`/home`}>Home</Link> */}
+
                 <br/>
                 <Link to={`${match.url}/search`}>Search</Link>
                 <br/>
