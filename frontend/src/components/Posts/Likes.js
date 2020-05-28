@@ -39,7 +39,7 @@ export default class Likes extends Component{
             recentLikers= [likers[0].username, likers[1].username, likers[2].username, '...' ]
         }  
         let ui = <div>
-            <button type="button" onClick={this.addLike}>{count} Likes!</button>
+            <button className="btn btn-info btn-sm ml-1 mr-2" type="button" onClick={this.addLike}>{count} Likes!</button>
                      { }
                     {recentLikers.join(', ')}
                 </div>
