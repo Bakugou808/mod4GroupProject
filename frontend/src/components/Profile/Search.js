@@ -6,7 +6,9 @@ export default class Search extends Component {
     state={
         posts: [],
         data: [],
-        selectedPost: []
+        selectedPosts: [],
+        searchValue: "",
+        filter: ""
     }
 
     componentDidMount() {
@@ -20,16 +22,31 @@ export default class Search extends Component {
 
     setCaption = () => {
         const {posts} = this.state
-        return posts.map(post => this.setState({data: [...this.state.data, {key: post.id, value: post.caption}]}))
+        return posts.map(post => this.setState({data: [...this.state.data, {key: post.id, value: post.caption.split(' ')}]}))
     }
 
     onSelect = ({value}) => {
         let post = this.state.posts.filter(post => post.caption.includes(value))
-        this.setState({selectedPost: post})
+        this.setState({selectedPosts: post})
     }
 
+    onChange = (record) => {
+        this.setState({searchValue: record}, this.setState({selectedPosts: this.state.posts.map(post => post.caption.includes(this.state.searchValue) && post )}))
+        // this.setState({selectedPosts: this.state.posts.map(post => post.caption.includes(this.state.searchValue))})
+    }
+
+    // filterChange = (record) => {
+    //     this.setState({filter: record}, this.filterSelected)
+    // }
+    
+    // filterSelected = () => {
+    //     this.setState(prev => ({selectedPosts: prev.selectedPosts.map(post => !post.caption.include(this.state.filter.shift()))}))
+    // }
+    
+    
+
     renderPost = () => {
-        return this.state.selectedPost.map(post => <PostContainer post={post} />)
+        return this.state.selectedPosts.map(post => post && <PostContainer post={post} />)
     }
 
     render() {
@@ -39,9 +56,16 @@ export default class Search extends Component {
                     placeholder="search posts"
                     data={this.state.data}
                     autoFocus
+                    onChange={record => this.onChange(record)}
                     onSelect={record => this.onSelect(record)}
                 />
-                {this.state.selectedPost && this.renderPost()}
+                {/* <ReactSearchBox 
+                    placeholder="filter"
+                    // data={this.state.date}
+                    autoFocus
+                    onChange={record => this.filterChange(record)}
+                /> */}
+                {this.state.selectedPosts && this.renderPost()}
             </div>
         )
     }

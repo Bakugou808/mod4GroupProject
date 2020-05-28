@@ -20,7 +20,7 @@ export default class Activity extends Component {
     render() {
         return (
             <div>
-                Display: recent likes, friend's recent posts, new follow requests
+                Display: recent likes, friend's recent posts, new follows
             </div>
         )
     }
