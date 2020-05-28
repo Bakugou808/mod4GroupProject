@@ -10,7 +10,7 @@ import Landingpage from './components/LandingPage/Landingpage'
 import Homepage from './components/Homepage/Homepage'
 import Profile from './components/Profile/Profile'
 import Navbar from './components/Navbar/Navbar'
-
+ 
 
 class App extends React.Component {
 
@@ -18,7 +18,7 @@ class App extends React.Component {
     super();
     this.state = {
       auth: {
-        user: {}, 
+        user: {}
       },
       profile: {},
       addcss: ''
@@ -52,7 +52,7 @@ class App extends React.Component {
     localStorage.removeItem("token");
     this.setState({ auth: { user: {} } });
   };
-
+  
   setProfile = (passedProfile) => {
     this.setState({profile: passedProfile})
   }
@@ -68,14 +68,13 @@ class App extends React.Component {
       <div>
           <Navbar onClick={this.onClick} profile={this.state.profile} user={this.state.auth.user} onLogout={this.logout} />
             <Route exact path="/" render={props => <Landingpage {...props} onSignup={this.login} onLogin={this.login}/> } />
-            <Route exact path='/home' render={props => <Homepage {...props} user={user} onLogout={this.logout} />}/>
+            <Route exact path='/profiles' render={props => <Homepage {...props} user={user} onLogout={this.logout} />}/>
             <Route exact path='/gallery' render={props => <Gallery {...props} user={user} /> } />
             <Route path={`/profiles/:id`}  render={props => <Profile {...props} class={this.state.addcss} setProfile={this.setProfile}/>} />
             
       </div>
     );
   }
-  
 }
 
-export default App;
+export default App

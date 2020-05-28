@@ -17,6 +17,8 @@ export default function Comment({comment, commentorProfile, profileID, deleteCom
                 <div className="rmv-btn" onClick={handleDeleteComment}>&#10005;</div>
             </div>
             <Likes type={"Comment"} id={comment.id} liker_id={profileID}/>
+            {<button type="button" onClick={handleDeleteComment}>Delete Comment</button>}
+
         </div>
     )
 }

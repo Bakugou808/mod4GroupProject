@@ -1,4 +1,3 @@
-require 'mini_magick'
 
 class Post < ApplicationRecord
   belongs_to :profile
@@ -18,19 +17,19 @@ class Post < ApplicationRecord
     profiles 
   end 
 
-  def self.getFeed 
+  def self.getRandomFeed 
     # find all posts within the past 2 weeks 
     # render that back
+    # byebug
+    # Post.where("created_at < ?", Time.now)
+    # posts = Post.where("created_at < ?", 2.days.ago)
+    # posts = Post.where(created_at: Date.new..5.days.ago)
+    posts = Post.where('created_at BETWEEN ? AND ?', Date.today-2, Time.now)
+    # posts= Post.where(Post[:created_at] < 2.days.ago)
+    posts
   end
 
-  # def formatUrl
-  #   img = self.img_url
 
-  #   img = MiniMagick::Image.new(img) 
-  #   img.resize "200x200" 
-  #   self.img_url = img
-  #   # self.save
-  # end
  
 
 end

@@ -84,6 +84,16 @@ const getFollowRequests = (profileID) => {
   })
 }
 
+const getFollowing = (profileID) => {
+  return fetch(API_ROOT(`/get_following/${profileID}`), {
+    headers: headers()
+  }).then(res => {
+    // console.log(res)
+    return res.json()
+  })
+}
+
+
 const getUser = (profileID) => {
   return fetch(API_ROOT(`/users/${profileID}`), {
     headers: headers()
@@ -169,6 +179,18 @@ const getProfile = (profileID) => {
   })
 }
 
+const getFeed = (profileID) => {
+  
+  return fetch(API_ROOT(`/profiles/get_feed/${profileID}`), {
+    headers: headers()
+  }).then(res => {
+    // console.log(res)
+    return res.json()
+  })
+}
+
+
+
 const deletePost = (postID) => {
   return fetch(API_ROOT(`/posts/${postID}`), { method: "DELETE",
     headers: headers()
@@ -187,6 +209,17 @@ const deleteComment = (commentID) => {
   })
 }
 
+const addFollower = (body) => {
+  console.log(body, "in addFollower")
+  return fetch(API_ROOT(`/followers`), {
+    method: "POST",
+    headers: headers(),
+    body: JSON.stringify(body)
+  }).then(res => {
+    // console.log(res.json())
+    return res.json()
+  })
+}
 
 
 export const api = {
@@ -198,6 +231,8 @@ export const api = {
     profile: {
       getCurrentProfile,
       getProfile,
+      getFeed,
+      addFollower,
     },
     posts: {
       getPosts,
@@ -207,6 +242,7 @@ export const api = {
     followers: {
       getFollowers,
       getFollowRequests,
+      getFollowing,
     },
     likes: {
       addLike,

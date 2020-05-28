@@ -27,7 +27,7 @@ export default class Likes extends Component{
      renderLikeUi = () => {
         const {likes, likers} = this.state 
         
-        let count = likes.length
+        let count = likes && likes.length
         
         let recentLikers = []
 

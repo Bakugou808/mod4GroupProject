@@ -10,7 +10,8 @@ import ProfileList from '../Profile/ProfileList'
 class Homepage extends Component {
 
     state = {
-        profiles: []
+        profiles: [],
+        
     }
 
     componentDidMount() {
@@ -30,16 +31,6 @@ class Homepage extends Component {
         )
     }
 
-
-    renderProfileRoutes = () => {
-        const {profiles} = this.props.user 
-        
-        return profiles.map(profile =>  (
-        <Route exact path={`/home/:profileID`} render={props => <Profile {...props} profile={profile} />}   />
-            )
-        )
-    }
-    
 
     render() {
         const {user, onLogout, match} = this.props

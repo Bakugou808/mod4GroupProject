@@ -12,6 +12,8 @@ export default class SideMenu extends Component {
         return (
             <div id="sidebar" className={this.props.class}>
                 <Link to={`${match.url}`}>Home</Link>
+                {/* <Link to={`/home`}>Home</Link> */}
+
                 <br/>
                 <Link to={`${match.url}/search`}>Search</Link>
                 <br/>
