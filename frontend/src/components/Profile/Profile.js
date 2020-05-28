@@ -14,17 +14,27 @@ import Stats from './Stats'
  class Profile extends Component {
 
     state = {
-        profile: {}
-    }
+        profile: {},
+        feed: [],
+    } 
 
     componentDidMount(){
-        api.profile.getCurrentProfile(this.props.match.params.id).then(profile => {
+        api.profile.getCurrentProfile(this.props.match.params.id).then(profile =>{
             this.setState({profile: profile})
-            this.props.setProfile(profile)
-        })
+            this.getFeed(profile.id)
+            })
+// =======
+//         api.profile.getCurrentProfile(this.props.match.params.id).then(profile => {
+//             this.setState({profile: profile})
+//             this.props.setProfile(profile)
+//         })
     }
 
-
+    getFeed = (id) => {
+        console.log(id, "in getfeed")
+        // api.profile.getFeed(id).then(feed => this.setState({feed: feed}))
+    }
+    
 
     
     render() {
@@ -36,6 +46,8 @@ import Stats from './Stats'
             <Fragment> 
                 <div>
                     {username && `${username}'s Profile`}
+                    <br/>
+                    this is where i would display a feed
                 </div>
                 <div className="side_menu_div">
                     <SideMenu match={match}/> 
@@ -46,7 +58,7 @@ import Stats from './Stats'
                 <Route exact path={`${match.url}/activity`} render={props => <Activity {...props} profile={profile} /> } />
                 <Route exact path={`${match.url}/stats`} render={props => <Stats {...props} profile={profile} /> } />
 
-                
+
             </Fragment>
          
          
