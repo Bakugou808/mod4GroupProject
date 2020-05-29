@@ -4,9 +4,7 @@ class Follower < ApplicationRecord
   def self.find_followers(profileID)
     followerIDs = Follower.where(profile_id: profileID)
     followers = followerIDs.map{ |follower| 
-      if follower.approved == true 
         Profile.find(follower.follower_id)
-      end 
     }
     followers 
   end

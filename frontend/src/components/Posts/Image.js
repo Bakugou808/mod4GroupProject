@@ -25,6 +25,8 @@ export default class Image extends Component {
         })
         return date 
     }
+
+
     
     // if false, allow for a callback, if true do not allow for callback to update like
 
@@ -32,7 +34,7 @@ export default class Image extends Component {
         const {img_url, caption, created_at, likes, post_id, liker_id} = this.props
         return (
             <div className="image">
-                <img className="card-img-top"  style={{width: 300, height: 300}} src={img_url} />
+                <img onClick={this.props.handleClick} className="card-img-top"  style={{width: this.props.size, height: this.props.size}} src={img_url} />
                 <br/>
                 {/* {img_url && <Likes likes={likes} post_id={post_id} liker_id={liker_id} type={"Post"}/>} */}
                 

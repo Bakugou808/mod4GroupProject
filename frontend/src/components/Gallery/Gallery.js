@@ -25,7 +25,7 @@ export default class Gallery extends Component {
         return posts.map(post => {
             return (
                 <div className="col-md my-3">
-                    <PostContainer key={post.id} post={post} userProfileID={userProfileID} deletePost={this.deletePost} /> 
+                    <PostContainer width="301px" key={post.id} post={post} userProfileID={userProfileID} deletePost={this.deletePost} /> 
                 </div>
                 )
         })
