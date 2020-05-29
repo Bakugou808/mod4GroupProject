@@ -29,10 +29,11 @@ export default class Gallery extends Component {
     renderProfile = () => {
         const {profile, followers, following} = this.state
 
+
         return <div className="top-gallery"> 
             <img className="image-gallery" src={profile.img_file}></img>
             <h2>{profile.username}</h2>
-            <h5 onClick={this.handleAddFollower}>{followers.length} Followers | {following.length} following</h5>
+            <h5 onClick={this.handleAddFollower}>{followers.length} Followers | {following.length} Following</h5>
             
         </div>
         
@@ -56,7 +57,9 @@ export default class Gallery extends Component {
             return (
                 <div className="col-md my-3">
 
+
                     <PostContainer handleClick={this.handleClick} width="301px" key={post.id} post={post} userProfileID={userProfileID} deletePost={this.deletePost} /> 
+
                 </div>
                 )
         })

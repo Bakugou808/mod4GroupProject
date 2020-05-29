@@ -8,7 +8,7 @@ class ProfilesController < ApplicationController
 
     def get_friends_posts
         posts = Profile.get_friends_posts(params[:profile_id])
-        render json: posts
+        render json: posts, include: ['profile']
     end 
 
     def get_profile_liked_posts

@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react'
 import { api } from '../../services/api'
 import './Activity.scss'
 
+// new profile needs to refresh on submit -> 
 export default class Activity extends Component {
 
     state = {
@@ -24,19 +25,22 @@ export default class Activity extends Component {
 
     renderFollows = () => {
         const {followers} = this.state
-        return followers.map(follower => <p>{follower.username} recently followed you!</p>)
+        return followers.map(follower => <p className="follower">{follower.username} recently followed you!</p>)
     }
     
     renderLikes = () => {
         const {likedPosts} = this.state
         
         return likedPosts.map(arr => (
-            <div>
-                <div className='post-info'>
+
+            <div width='60vw'>
+                <div className='post-info' >
                     <img src={arr[0]} className="activity-post-photo"/>
+                    <br></br>
                     {arr[1]}
                 </div> 
                 <div className="liked-list">
+                    {arr[2].length} Likes! 
                     {this.renderLikeList(arr[2])}
                 </div>
             </div> 
@@ -75,8 +79,8 @@ export default class Activity extends Component {
             thisWeeksFriendPosts.map(post => (
                 <div className="recent-post">
                     <img src={post.img_url} />
-                    {post.caption}
-                    {this.convertDate(post.created_at)}
+                    <br/>
+                    {post.caption} by {post.profile.username} on {this.convertDate(post.created_at)}
                 </div>
             ))
         ) 
@@ -88,11 +92,13 @@ export default class Activity extends Component {
         return <div className="activity-card">
              <div>
                 <h2 className="text-capitalize" style={{color: '#007676'}}>Recent Follows</h2>
+
                 <div className="collapsable-recent-followers">
                     {followers && this.renderFollows()}
                 </div>
             </div>
             <div>
+
                 <h2 className="text-capitalize" style={{color: '#007676'}}>Recent Likes</h2>
                 <div className="collapsable-recent-likes">
                     {likedPosts && this.renderLikes()}
@@ -112,9 +118,9 @@ export default class Activity extends Component {
     render() {
         const {likedPosts} = this.state
         return (
+
             <div className="activity-container">
                 {likedPosts && this.renderDetails()}
-
             </div>
         )
     }
