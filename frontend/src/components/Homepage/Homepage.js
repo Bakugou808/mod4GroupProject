@@ -22,7 +22,7 @@ class Homepage extends Component {
         
         return profiles.map(profile =>  (
             <ul class="list-group flex-fill">
-                    <Link to={`/profiles/${profile.id}`} className='profile_link'><li class="list-group-item"> {profile.username} </li></Link>
+                    <Link to={`/profiles/${profile.id}`} style={{textDecoration: 'none'}} className='profile_link'><li class="list-group-item"> {profile.username} </li></Link>
                 </ul>
                 
             )

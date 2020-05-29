@@ -125,10 +125,6 @@ import ViewOtherGallery from '../Gallery/ViewOtherGallery'
                     <SideMenu class={this.props.class} match={match}/> 
                 </div>
                 <div className="page">
-                   <div className="title my-2">
-                        {username && `${username}'s Profile`}
-                   </div>
-
                   <Route exact path={`${match.url}/search`} render={(props) => <Search {...props} userProfileID={parseInt(match.params.id)}/>} />
                   <Route exact path={`${match.url}/gallery`} render={props => <Gallery {...props} userProfileID={parseInt(match.params.id)} profile={profile} /> } />
                   <Route exact path={`${match.url}/addMedia`} render={props => <AddMedia {...props} userProfileID={parseInt(match.params.id)} profile={profile} /> } />
