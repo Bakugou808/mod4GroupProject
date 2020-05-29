@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import { Route, Navlink, Link, withRouter } from "react-router-dom";
 
-export default class ProfileForm extends Component {
+
+ class ProfileForm extends Component {
     constructor() {
         super()
         
@@ -34,6 +36,7 @@ export default class ProfileForm extends Component {
         data.append('avatar', this.state.img_file) 
         let res = await axios.post(API_ROOT(`/profiles`), data)
         this.setState({profile: res})
+        window.location.reload()
     }
 
     render() {
@@ -66,3 +69,5 @@ export default class ProfileForm extends Component {
         )
     }
 }
+
+export default withRouter(ProfileForm)
