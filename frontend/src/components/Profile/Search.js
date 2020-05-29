@@ -67,7 +67,7 @@ export default class Search extends Component {
                     autoFocus
                     onChange={record => this.filterChange(record)}
                 /> */}
-                <div className="container">
+                <div className="container mt-3">
                     <div className="row">
                         {this.state.selectedPosts && this.renderPost()}
                     </div>

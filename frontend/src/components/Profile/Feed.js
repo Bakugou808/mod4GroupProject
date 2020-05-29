@@ -27,9 +27,8 @@ export default class Feed extends Component {
     }
 
     handleClick = () => {
-        if(this.props.history.location.pathname === `/profiles/${this.props.profile.id}` && this.state.display){
+        if(this.state.display){
             this.setState({display: false})
-            console.log('fuck')
             return 'none'
         } else {
             this.setState({display: true}) 
@@ -46,7 +45,7 @@ export default class Feed extends Component {
             return (
                 <div className="big-card my-5">
                     <HandleProfile key={post.profile.id} profile={post.profile} userProfileID={userProfileID} match={match} />
-                    <PostContainer handleClick={this.handleClick} width='60vw' key={post.id} post={post} userProfileID={userProfileID}/>
+                    <PostContainer handleClick={this.handleClick} width='30vw' key={post.id} post={post} userProfileID={userProfileID}/>
                 </div> 
             )
         } )

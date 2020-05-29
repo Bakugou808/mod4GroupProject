@@ -21,9 +21,9 @@ class Homepage extends Component {
         const {profiles} = this.props.user 
         
         return profiles.map(profile =>  (
-                <Fragment>
-                    <div><Link to={`/profiles/${profile.id}`} className='profile_link'> {profile.username} </Link></div> 
-                </Fragment>
+            <ul class="list-group flex-fill">
+                    <Link to={`/profiles/${profile.id}`} className='profile_link'><li class="list-group-item"> {profile.username} </li></Link>
+                </ul>
                 
             )
         )
@@ -35,15 +35,18 @@ class Homepage extends Component {
         const {name, profiles} = this.props.user
         return (
             
-            <div>
-                <ProfileForm key={user.id} user={user}/>
-                {name && `Welcome To the homepage ${name}`}
-                <br></br>
-                <br></br>
-                <div>
-                {profiles && this.renderProfiles()}
+            <div className="container">
+                <h2 className="mt-3">{name && `${name}'s Profiles`}</h2>
+                <div className="row mt-5">
+                    <div className="col-2">
+                        {profiles && this.renderProfiles()}
+                    </div>
+                    <div className="col-1"></div>
+                    <div className="col-9">
+                        <h3 className="text-info">New Profile:</h3>
+                        <ProfileForm key={user.id} user={user}/>
+                    </div>
                 </div>
-
             </div>
         )
     }

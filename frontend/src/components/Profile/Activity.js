@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { api } from '../../services/api'
+import './Activity.scss'
 
 // new profile needs to refresh on submit -> 
 export default class Activity extends Component {
@@ -31,6 +32,7 @@ export default class Activity extends Component {
         const {likedPosts} = this.state
         
         return likedPosts.map(arr => (
+
             <div width='60vw'>
                 <div className='post-info' >
                     <img src={arr[0]} className="activity-post-photo"/>
@@ -79,7 +81,6 @@ export default class Activity extends Component {
                     <img src={post.img_url} />
                     <br/>
                     {post.caption} by {post.profile.username} on {this.convertDate(post.created_at)}
-                    
                 </div>
             ))
         ) 
@@ -90,19 +91,21 @@ export default class Activity extends Component {
 
         return <div className="activity-card">
              <div>
-                <h2>Recent Follows</h2>
+                <h2 className="text-capitalize" style={{color: '#007676'}}>Recent Follows</h2>
+
                 <div className="collapsable-recent-followers">
                     {followers && this.renderFollows()}
                 </div>
             </div>
             <div>
-                <h2>Recent Likes</h2>
+
+                <h2 className="text-capitalize" style={{color: '#007676'}}>Recent Likes</h2>
                 <div className="collapsable-recent-likes">
                     {likedPosts && this.renderLikes()}
                 </div>
             </div>
             <div>
-                <h2>Recent Posts</h2>
+                <h2 className="text-capitalize" style={{color: '#007676'}}>Recent Posts</h2>
                 <div className="collapsable-recent-posts">
                     {thisWeeksFriendPosts && this.renderPosts()}
                 </div>
@@ -115,10 +118,9 @@ export default class Activity extends Component {
     render() {
         const {likedPosts} = this.state
         return (
-            <div>
-                Display: recent likes, friend's recent posts, new follows
-                {likedPosts && this.renderDetails()}
 
+            <div className="activity-container">
+                {likedPosts && this.renderDetails()}
             </div>
         )
     }

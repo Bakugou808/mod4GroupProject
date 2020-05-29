@@ -46,6 +46,10 @@ export default class ViewOtherGallery extends Component {
         api.profile.getProfile(id).then(profile => this.setState({viewedProfile: profile}))
         // , followers: profile.followers
         api.followers.getFollowers(id).then(followers => this.setState({followers: followers}))
+// <<<<<<< master
+//         api.followers.getFollowing(id).then(following => this.setState({following: following}), this.state.followers.filter(follower => follower.id === this.props.userProfileID) && this.setState({alreadyFollowing: true}))
+//         // followers.filter(follower => follower.id === userProfileID) && this.setState({alreadyFollowing: true})
+// =======
 
         api.followers.getFollowing(id).then(following => this.setState({following: following})) 
 
@@ -84,8 +88,15 @@ export default class ViewOtherGallery extends Component {
         return <Fragment> 
             <img src={viewedProfile.img_file}></img>
             {alreadyFollowing ? 
+
+
+//             // need to fix the follow condition
+//            <div><h2>{followers.length}Followers</h2><h4>(Followed)</h4></div> : <h2 onClick={this.handleAddFollower}>{followers.length}Followers +</h2>}
+//            <h2 onClick={this.handleAddFollower}>{followers.length}Followers +</h2>
+
            <div><h2>{followers.length}Followers</h2><h4>(Followed)</h4></div> : <h2 onClick={this.handleAddFollower}>{followers.length}Followers +</h2>}
            {/* <h2 onClick={this.handleAddFollower}>{followers.length}Followers +</h2> */}
+
             
             <h2>{following.length} following</h2>
             <h3>{viewedProfile.username}</h3>

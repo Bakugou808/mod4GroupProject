@@ -134,7 +134,7 @@ export default class Comments extends Component {
 
                  <form onSubmit={this.addComment}>
                      <label className="ml-1">Add Comment +</label>
-                     <input type="text" name="comment" value={comment} onChange={this.handleChange}/>
+                     <input style={{marginBottom: '10px'}} type="text" name="comment" value={comment} onChange={this.handleChange}/>
                  </form>
             </div>
         )

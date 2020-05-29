@@ -48,20 +48,29 @@ export default class Signup extends Component {
         <div>
             {this.state.error ? <h1>Try again...</h1> : null}
            <form className="signup-form" onSubmit = {this.handleSubmit}>
-               <label>Name</label>
-               <input type="name" name="name" value={name} required onChange={this.handleChange}/>
+             <div className="form-group">
+                <label>Name</label>
+                <input className="form-control" type="name" name="name" value={name} required onChange={this.handleChange}/>
+            </div>
+            <div className="form-group">
                <label>Email</label>
-               <input type="email" name="email" value={email} required onChange={this.handleChange}/>
+               <input className="form-control" type="email" name="email" value={email} required onChange={this.handleChange}/>
+            </div>
+            <div className="form-group">
                <label>Birthday</label>
-               <input type="text" name="birthday" value={birthday} required onChange={this.handleChange}/>
+               <input className="form-control" type="text" name="birthday" value={birthday} required onChange={this.handleChange}/>
+            </div>
                {/* <label>Location</label>
                <input type="text" name="location" value={location} required onChange={this.handleChange}/> */}
+            <div className="form-group">
                <label>Password</label>
-               <input type="password" name="password" value={password} required onChange={this.handleChange}/>
+               <input className="form-control" type="password" name="password" value={password} required onChange={this.handleChange}/>
+            </div>
+            <div className="form-group">
                <label>Verify Password</label>
-               <input type="password" name="password_confirmation" value={password_confirmation} required onChange={this.handleChange}/>
-               
-               <button type="submit">Signup</button>
+               <input className="form-control" type="password" name="password_confirmation" value={password_confirmation} required onChange={this.handleChange}/>
+            </div>
+               <button className="btn btn-info" type="submit">Signup</button>
            </form>
        </div>
         )

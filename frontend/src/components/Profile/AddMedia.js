@@ -39,14 +39,18 @@ export default class AddMedia extends Component {
 
     render() {
         return (
-            <div>
-                <form onSubmit={this.fileUploadHandler}>
-                    <label>Add Media</label>
-                    <input type="file" name="media_file" onChange={this.selectedFileHandler}/>
+            <div className="container">
+                <form style={{marginTop: '15vh'}} onSubmit={this.fileUploadHandler}>
+                    <div class="form-group">
+                        <label>Add Media</label>
+                        <input className="form-control-file" type="file" name="media_file" onChange={this.selectedFileHandler}/>
+                    </div>
                     {/* <button onClick={this.fileUploadHandler} >Upload Media</button> */}
-                    <label>Add Caption</label>
-                    <input type="text" value={this.state.caption} name="caption" onChange={this.handleCaption}/>
-                    <button type="submit">Submit Post</button>
+                    <div class="form-group">
+                        <label>Add Caption</label>
+                        <input className="form-control" type="text" value={this.state.caption} name="caption" onChange={this.handleCaption}/>
+                    </div>
+                    <button className="btn btn-info" type="submit">Submit Post</button>
                 </form>
                 <div>
                     {this.state.post && <img src={this.state.post.data.img_url} /> }

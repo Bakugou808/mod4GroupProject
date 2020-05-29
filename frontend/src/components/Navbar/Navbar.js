@@ -44,7 +44,7 @@ class Navbar extends Component {
                 </div> : null 
                 }
                 <div>
-                {username && `${username}'s Profile`}
+                { this.props.history.location.pathname !== '/' ? username && `${username}'s Profile` : null}
                 {
                     this.props.user.name ? <button className="ml-3 mb-1 option btn btn-outline-danger" onClick={this.onLogout}>SIGN OUT</button> : null
                 }           
