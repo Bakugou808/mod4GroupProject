@@ -6,6 +6,7 @@ export default class Activity extends Component {
     state = {
         followers: [],
         likedPosts: [],
+
         thisWeeksFriendPosts: [],
         // thisMonthsFriendPosts: [],
     }
@@ -103,6 +104,7 @@ export default class Activity extends Component {
                 </div>
             </div> 
         </div>
+
     }
     
 
@@ -112,6 +114,7 @@ export default class Activity extends Component {
             <div>
                 Display: recent likes, friend's recent posts, new follows
                 {likedPosts && this.renderDetails()}
+
             </div>
         )
     }

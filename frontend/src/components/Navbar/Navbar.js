@@ -23,7 +23,12 @@ class Navbar extends Component {
         }
     }
 
+    handleClickForUser = () => {
+        this.props.history.push(`/profiles/${this.props.user.id}/gallery`)
+    }
+
     render() {
+        const username = this.props.profile.username
         return (
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
                 <div>
@@ -34,13 +39,14 @@ class Navbar extends Component {
                <Link className="navbar-brand ml-1" to="/">
                   Instaclone
                </Link> 
-                { this.props.user.name? <div onClick={this.handleClick} className="gallery mx-auto">
+                { this.props.user.name? <div onClick={this.handleClickForUser} className="gallery mx-auto">
                    <img style={{width: 50, height: 50, borderRadius: '50%'}} src={this.props.profile.img_file} />
                 </div> : null 
                 }
-                <div className="options">
+                <div>
+                {username && `${username}'s Profile`}
                 {
-                    this.props.user.name ? <button className="option btn btn-light" onClick={this.onLogout}>SIGN OUT</button> : null
+                    this.props.user.name ? <button className="ml-3 mb-1 option btn btn-outline-danger" onClick={this.onLogout}>SIGN OUT</button> : null
                 }           
                 </div>
             </nav>

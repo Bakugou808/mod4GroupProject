@@ -46,18 +46,20 @@ export default class Search extends Component {
     
 
     renderPost = () => {
-        return this.state.selectedPosts.map(post => post && <PostContainer post={post} />)
+        return this.state.selectedPosts.map(post => post && <div className="col-md-auto my-3 ml-5"><PostContainer width='300px' post={post} /></div>)
     }
 
     render() {
         return (
-            <div>
+            <div style={{width: '90vw', marginLeft: '1vw', marginTop: '3vh'}}>
                 <ReactSearchBox
-                    placeholder="search posts"
+                    placeholder="Search posts"
                     data={this.state.data}
                     autoFocus
                     onChange={record => this.onChange(record)}
                     onSelect={record => this.onSelect(record)}
+                    inputBoxFontSize="22px"
+                    dropDownHoverColor="#ebffff"
                 />
                 {/* <ReactSearchBox 
                     placeholder="filter"
@@ -65,7 +67,11 @@ export default class Search extends Component {
                     autoFocus
                     onChange={record => this.filterChange(record)}
                 /> */}
-                {this.state.selectedPosts && this.renderPost()}
+                <div className="container">
+                    <div className="row">
+                        {this.state.selectedPosts && this.renderPost()}
+                    </div>
+                </div>
             </div>
         )
     }
