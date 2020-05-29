@@ -7,17 +7,13 @@ import Profile from '../Profile/Profile'
 import ProfileList from '../Profile/ProfileList'
 
 
+
 class Homepage extends Component {
 
     state = {
         profiles: [],
         
     }
-
-    componentDidMount() {
-
-    }
-
 
     renderProfiles = () => {
         const {profiles} = this.props.user 

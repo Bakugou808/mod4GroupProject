@@ -6,7 +6,8 @@ class Follower < ApplicationRecord
     followers = followerIDs.map{ |follower| 
         Profile.find(follower.follower_id)
     }
-    followers 
+    
+    followers.uniq 
   end
 
   def self.find_follower_requests(profileID)
@@ -22,7 +23,9 @@ class Follower < ApplicationRecord
 
   def self.get_following(profileID) 
     following = Follower.where(follower_id: profileID)
+    
     followingProfiles = following.map{|follow| Profile.find(follow.profile_id)}
+    followingProfiles.uniq
   end
 
 end

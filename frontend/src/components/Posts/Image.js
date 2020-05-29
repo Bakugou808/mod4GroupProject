@@ -28,7 +28,6 @@ export default class Image extends Component {
 
 
     
-    // if false, allow for a callback, if true do not allow for callback to update like
 
     render() {
         const {img_url, caption, created_at, likes, post_id, liker_id} = this.props
