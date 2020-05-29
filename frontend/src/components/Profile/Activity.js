@@ -35,6 +35,7 @@ export default class Activity extends Component {
                     {arr[1]}
                 </div> 
                 <div className="liked-list">
+                    {arr[2].length} Likes! 
                     {this.renderLikeList(arr[2])}
                 </div>
             </div> 

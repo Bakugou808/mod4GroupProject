@@ -15,7 +15,7 @@ class FollowersController < ApplicationController
 
     def profiles_followers
         followers = Follower.find_followers(params[:profile_id])
-        render json: followers 
+        render json: followers
     end
 
     def profiles_follower_requests
