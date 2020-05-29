@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react'
+import './Feed.scss'
 import { api } from '../../services/api'
 import PostContainer from '../Posts/PostContainer'
 import HandleProfile from './HandleProfile'
@@ -32,10 +33,10 @@ export default class Feed extends Component {
 
         return posts.map(post => {
             return (
-                <Fragment>
+                <div className="big-card my-5">
                     <HandleProfile key={post.profile.id} profile={post.profile} userProfileID={userProfileID} match={match} />
-                    <PostContainer key={post.id} post={post} userProfileID={userProfileID}/>
-                </Fragment>
+                    <PostContainer width='60vw' key={post.id} post={post} userProfileID={userProfileID}/>
+                </div>
                 
             )
         } )

@@ -25,8 +25,8 @@ export default class PostContainer extends Component {
             //         </div>
             //     </div>
 
-            <div className="card" style={{width: 301}}>
-                <Image img_url={img_url} caption={caption} created_at={created_at} likes={likes} liker_id={profile_id} post_id={id}/>
+            <div className="card" style={{width: this.props.width}}>
+                <Image size={this.props.width}  img_url={img_url} caption={caption} created_at={created_at} likes={likes} liker_id={profile_id} post_id={id}/>
                 <Likes id={id} liker_id={profile_id} type={"Post"} />              
                 <Comments post_id={id} profile_id={profile_id}/>
                 <button className="btn btn-warning" onClick={this.handleDeletePost}>Delete Post</button> 

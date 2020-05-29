@@ -11,7 +11,7 @@ export default class SideMenu extends Component {
         const {match} = this.props
         return (
             <div id="sidebar" className={this.props.class}>
-                <Link to={`${match.url}`}>Home</Link>
+                <Link className="top" to={`${match.url}`}>Home</Link>
                 {/* <Link to={`/home`}>Home</Link> */}
 
                 <br/>
