@@ -21,9 +21,12 @@ class ProfilesController < ApplicationController
     end 
 
     def create 
-        
         profile = Profile.new(profile_params)
         if profile.save 
+            url = url_for(profile.avatar) 
+            profile.img_file = url
+            
+            profile.save
             render json: profile 
         # else 
         #     flash[:error_messages] = profile.errors.full_messages 
@@ -62,6 +65,6 @@ class ProfilesController < ApplicationController
     end
 
     def profile_params
-        params.require(:profile).permit(:user_id, :username, :description, :img_file, :last_seen)
+        params.permit(:user_id, :username, :description, :avatar, :last_seen)
     end
 end

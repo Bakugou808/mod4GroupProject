@@ -22,7 +22,6 @@ const Landingpage = (props) => {
                 <br></br>
                 <Login {...props} onLogin={onLogin} />
              </div>
-             
         </div>
     )
 }

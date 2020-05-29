@@ -26,7 +26,6 @@ export default class ProfileForm extends Component {
         event.preventDefault()
         // post call?
         const API_ROOT = (path)=> `http://localhost:3000${path}`
-        
         let id = this.props.user.id
         let data = new FormData()
         data.append('user_id', id)
