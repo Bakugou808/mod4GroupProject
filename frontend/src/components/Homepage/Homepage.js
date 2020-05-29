@@ -9,17 +9,13 @@ import ProfileForm from '../Profile/ProfileForm'
 
 
 
+
 class Homepage extends Component {
 
     state = {
         profiles: [],
         
     }
-
-    componentDidMount() {
-
-    }
-
 
     renderProfiles = () => {
         const {profiles} = this.props.user 

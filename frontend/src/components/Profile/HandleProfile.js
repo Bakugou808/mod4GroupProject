@@ -12,12 +12,11 @@ class HandleProfile extends Component {
     render() {
         const {profile, match} = this.props
         return (
+
             <div>
-                {/* <div onClick={this.handleViewProfile}>{profile.img_file}</div> */}
                 <div className="gallery mx-auto">
                    <img onClick={this.handleClick} style={{width: 50, height: 50, borderRadius: '35%'}} src={this.props.profile.img_file} />
                 </div>
-                {/* <Route path={`${match}/view/:viewProfileId`}  render={props => <Profile {...props} />} /> */}
             </div>
         )
     }

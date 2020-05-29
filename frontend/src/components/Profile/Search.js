@@ -22,7 +22,7 @@ export default class Search extends Component {
 
     setCaption = () => {
         const {posts} = this.state
-        posts && posts.map(post => this.setState({data: [...this.state.data, {key: post.id, value: post.caption.split(' ')}]}))
+        return posts.map(post => this.setState({data: [...this.state.data, {key: post.id, value: post.caption.split(' ')}]}))
     }
 
     onSelect = ({value}) => {
