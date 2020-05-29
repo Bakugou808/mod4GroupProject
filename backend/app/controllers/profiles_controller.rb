@@ -6,18 +6,15 @@ class ProfilesController < ApplicationController
         render json: profiles
     end
 
-    def produceFeed
-        # gather content/posts from friends
-
+    def get_friends_posts
+        posts = Profile.get_friends_posts(params[:profile_id])
+        render json: posts
     end 
 
-    def followers 
-
-    end 
-
-    def following 
-
-    end 
+    def get_profile_liked_posts
+        likeHash = Profile.get_profile_likes(params[:profile_id])
+        render json: likeHash
+    end
 
     def show
         render json: @profile, include: [ 'posts', 'followers']

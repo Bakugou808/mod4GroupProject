@@ -191,6 +191,7 @@ const getFeed = (profileID) => {
 
 
 
+
 const deletePost = (postID) => {
   return fetch(API_ROOT(`/posts/${postID}`), { method: "DELETE",
     headers: headers()
@@ -221,6 +222,24 @@ const addFollower = (body) => {
   })
 }
 
+const getProfileLikedPosts = (profileID) => {
+  return fetch(API_ROOT(`/get_profile_liked_posts/${profileID}`), {
+  headers: headers()
+  }).then(res => {
+    // console.log(res)
+    return res.json()
+  })
+}
+
+
+const getFriendsPosts = (profileID) => {
+  return fetch(API_ROOT(`/get_friends_posts/${profileID}`), {
+    headers: headers()
+  }).then(res => {
+    // console.log(res)
+    return res.json()
+  })
+}
 
 export const api = {
     auth: {
@@ -233,6 +252,8 @@ export const api = {
       getProfile,
       getFeed,
       addFollower,
+      getProfileLikedPosts,
+      getFriendsPosts,
     },
     posts: {
       getPosts,

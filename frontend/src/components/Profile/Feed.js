@@ -21,7 +21,6 @@ export default class Feed extends Component {
 
     getFeed = () => {
         let id = this.props.match.url.split('/')[2]
-        console.log(id, "inget feed")
         api.profile.getFeed(id).then(feed => this.setState({posts: feed}))
         
     }

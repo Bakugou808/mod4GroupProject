@@ -4,9 +4,7 @@ import React, { Component } from 'react'
 import { api } from '../../services/api'
 
 export default class Likes extends Component{
-    // presentational 
-    // let likeCount = props.likes.length 
-    // const [likes, setLikes] = React.useState(likeCount)
+
 
     state = {
         likes: null,
