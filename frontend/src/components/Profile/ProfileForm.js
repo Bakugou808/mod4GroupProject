@@ -40,24 +40,33 @@ export default class ProfileForm extends Component {
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
-                    <label>Enter your user name:</label>
-                    <input type="text" 
-                        name="userName" 
-                        value={this.state.userName} 
-                        onChange={this.changeHandler} 
-                    />
-                    <label>Enter your description:</label>
-                    <input type="text" 
-                        name="description" 
-                        value={this.state.description} 
-                        onChange={this.changeHandler} 
-                    />
-                    <label>Select your profile pic:</label>
-                    <input type="file"
-                        name="img_file" 
-                        onChange={this.selectedFileHandler}
-                    />
-                    <button type="submit">Make Profile</button>
+                    <div className="form-group">
+                        <label>Enter your user name:</label>
+                        <input className="form-control"
+                            type="text" 
+                            name="userName" 
+                            value={this.state.userName} 
+                            onChange={this.changeHandler} 
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label>Enter your description:</label>
+                        <input className="form-control"
+                            type="text" 
+                            name="description" 
+                            value={this.state.description} 
+                            onChange={this.changeHandler} 
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label>Select your profile pic:</label>
+                        <input className="form-control-file" 
+                            type="file"
+                            name="img_file" 
+                            onChange={this.selectedFileHandler}
+                        />
+                    </div>
+                    <button className="btn btn-info" type="submit">Make Profile</button>
                 </form>
                 <div>
                     {this.state.profile && <img src={this.state.profile.data.img_file} /> }
