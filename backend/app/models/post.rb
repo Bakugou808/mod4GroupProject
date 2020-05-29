@@ -7,7 +7,7 @@ class Post < ApplicationRecord
 
   def self.find_posts(profileID)
     posts = Post.where(profile_id: profileID)
-    posts
+    posts.order('created_at DESC')
   end
 
   def getLikers
@@ -26,7 +26,7 @@ class Post < ApplicationRecord
     # posts = Post.where(created_at: Date.new..5.days.ago)
     posts = Post.where('created_at BETWEEN ? AND ?', Date.today-2, Time.now)
     # posts= Post.where(Post[:created_at] < 2.days.ago)
-    posts
+    posts.order('created_at DESC')
   end
 
 

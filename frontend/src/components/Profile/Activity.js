@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import { api } from '../../services/api'
 
+// new profile needs to refresh on submit -> 
 export default class Activity extends Component {
 
     state = {
@@ -23,16 +24,17 @@ export default class Activity extends Component {
 
     renderFollows = () => {
         const {followers} = this.state
-        return followers.map(follower => <p>{follower.username} recently followed you!</p>)
+        return followers.map(follower => <p className="follower">{follower.username} recently followed you!</p>)
     }
     
     renderLikes = () => {
         const {likedPosts} = this.state
         
         return likedPosts.map(arr => (
-            <div>
-                <div className='post-info'>
+            <div width='60vw'>
+                <div className='post-info' >
                     <img src={arr[0]} className="activity-post-photo"/>
+                    <br></br>
                     {arr[1]}
                 </div> 
                 <div className="liked-list">
@@ -75,8 +77,9 @@ export default class Activity extends Component {
             thisWeeksFriendPosts.map(post => (
                 <div className="recent-post">
                     <img src={post.img_url} />
-                    {post.caption}
-                    {this.convertDate(post.created_at)}
+                    <br/>
+                    {post.caption} by {post.profile.username} on {this.convertDate(post.created_at)}
+                    
                 </div>
             ))
         ) 
