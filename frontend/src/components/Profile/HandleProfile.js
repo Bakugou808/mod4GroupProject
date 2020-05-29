@@ -9,6 +9,7 @@ class HandleProfile extends Component {
         const {profile, match, userProfileID} = this.props
         if (profile.id != userProfileID){
             this.props.history.push(`${match.url}/view/${profile.id}`)
+            // this.props.history.push(`${profile.id}/gallery`)
         } else {
             this.props.history.push(`${match.url}/gallery`)
         }
