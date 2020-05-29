@@ -29,8 +29,8 @@ export default class Gallery extends Component {
 
         return <Fragment> 
             <img src={profile.img_file}></img>
-            <h2 onClick={this.handleAddFollower}>{followers.length}Followers +</h2>
-            <h2>{following.length} following</h2>
+            <h2>{followers.length} Followers </h2>
+            <h2>{following.length} Following</h2>
             <h3>{profile.username}</h3>
         </Fragment>
         
