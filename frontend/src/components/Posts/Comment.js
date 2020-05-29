@@ -14,11 +14,11 @@ export default function Comment({comment, commentorProfile, profileID, deleteCom
             <div className="my-2">
                 <p className="comment ml-2">{comment && comment.comment} - {commentorProfile && commentorProfile.username}</p>
                 
-                {profileID === comment.profile_id && <div className="rmv-btn" onClick={handleDeleteComment}>&#10005;</div>}
+                {profileID === comment.profile_id && <div className="rmv-btn" style={{color: 'red'}} onClick={handleDeleteComment}>&#10005;</div>}
             </div>
             <Likes type={"Comment"} id={comment.id} liker_id={profileID}/>
 
-            {<button type="button" onClick={handleDeleteComment}>Delete Comment</button>}
+            {/* {<button type="button" onClick={handleDeleteComment}>Delete Comment</button>} */}
         </div>
     )
 }

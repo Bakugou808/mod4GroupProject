@@ -14,8 +14,8 @@ class HandleProfile extends Component {
         return (
 
             <div>
-                <div className="gallery mx-auto">
-                   <img onClick={this.handleClick} style={{width: 50, height: 50, borderRadius: '35%'}} src={this.props.profile.img_file} />
+                <div className="gallery">
+                   <img onClick={this.handleClick} style={{marginBottom: '1vh', width: 50, height: 50, borderRadius: '20%', border: 'none'}} src={this.props.profile.img_file} />
                 </div>
             </div>
         )

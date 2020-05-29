@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { api } from '../../services/api'
+import './Gallery.scss'
 import PostContainer from '../Posts/PostContainer'
 
 export default class Gallery extends Component {
@@ -8,7 +9,8 @@ export default class Gallery extends Component {
         posts: [],
         followers: [],
         following: [],
-        profile: null
+        profile: null,
+        display: true
     }
     
     deletePost = (postID) => {
@@ -27,13 +29,23 @@ export default class Gallery extends Component {
     renderProfile = () => {
         const {profile, followers, following} = this.state
 
-        return <Fragment> 
-            <img src={profile.img_file}></img>
-            <h2 onClick={this.handleAddFollower}>{followers.length}Followers +</h2>
-            <h2>{following.length} following</h2>
-            <h3>{profile.username}</h3>
-        </Fragment>
+        return <div className="top-gallery"> 
+            <img className="image-gallery" src={profile.img_file}></img>
+            <h2>{profile.username}</h2>
+            <h5 onClick={this.handleAddFollower}>{followers.length} Followers | {following.length} following</h5>
+            
+        </div>
         
+    }
+
+    handleClick = () => {
+        if(this.state.display){
+            this.setState({display: false})
+            return 'none'
+        } else {
+            this.setState({display: true}) 
+            return ''
+        }
     }
 
     renderPosts = () => {
@@ -44,7 +56,7 @@ export default class Gallery extends Component {
             return (
                 <div className="col-md my-3">
 
-                    <PostContainer width="301px" key={post.id} post={post} userProfileID={userProfileID} deletePost={this.deletePost} /> 
+                    <PostContainer handleClick={this.handleClick} width="301px" key={post.id} post={post} userProfileID={userProfileID} deletePost={this.deletePost} /> 
                 </div>
                 )
         })

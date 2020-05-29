@@ -24,9 +24,9 @@ export default class PostContainer extends Component {
         return (
 
 
-            <div className="card" style={{width: this.props.width}}>
-                <Image handleClick={() => {let name =this.props.handleClick(); this.setState({name: name}) }} size={this.props.width} img_url={img_url} caption={caption} created_at={created_at} likes={likes} liker_id={userProfileID} post_id={id} match={match}/>
-                <div className={this.state.name}>
+            <div className="card border-info" style={{width: this.props.width}}>
+                <Image handleClick={() => {let name =this.props.handleClick(); this.setState({name: name})}} size={this.props.width} img_url={img_url} caption={caption} created_at={created_at} likes={likes} liker_id={userProfileID} post_id={id} match={match}/>
+                <div className={this.state.name} style={{marginLeft: 11}}>
                     <Likes id={id} liker_id={userProfileID} type={"Post"} match={match}/>              
                     <Comments post_id={id} profile_id={userProfileID} match={match}/>
                     {userProfileID === profile_id && <button className="btn btn-warning" onClick={this.handleDeletePost}>Delete Post</button> }
