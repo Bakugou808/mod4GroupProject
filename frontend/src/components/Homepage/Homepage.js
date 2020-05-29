@@ -5,6 +5,8 @@ import Navbar from "../Navbar/Navbar";
 import { RouterBrowser as Router, Route, Navlink, Link, Switch } from "react-router-dom";
 import Profile from '../Profile/Profile'
 import ProfileList from '../Profile/ProfileList'
+import ProfileForm from '../Profile/ProfileForm'
+
 
 
 class Homepage extends Component {
@@ -38,6 +40,7 @@ class Homepage extends Component {
         return (
             
             <div>
+                <ProfileForm key={user.id} user={user}/>
                 {name && `Welcome To the homepage ${name}`}
                 <br></br>
                 <br></br>
