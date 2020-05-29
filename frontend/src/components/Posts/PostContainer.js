@@ -30,7 +30,7 @@ export default class PostContainer extends Component {
                 <div className={this.state.name} style={{marginLeft: 11}}>
                     <Likes id={id} liker_id={userProfileID} type={"Post"} match={match}/>              
                     <Comments post_id={id} profile_id={userProfileID} match={match}/>
-                    {userProfileID === profile_id && <button className="btn btn-warning" onClick={this.handleDeletePost}>Delete Post</button> }
+                    {userProfileID === profile_id && <button className="btn btn-warning mb-3" onClick={this.handleDeletePost}>Delete Post</button> }
                 </div>
             </div>
         )

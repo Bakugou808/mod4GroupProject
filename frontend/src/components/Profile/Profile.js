@@ -132,9 +132,7 @@ import ViewOtherGallery from '../Gallery/ViewOtherGallery'
                   <Route exact path={`${match.url}/stats`} render={props => <Stats {...props} userProfileID={parseInt(match.params.id)} profile={profile} /> } />
                   <Route exact path={`${match.url}`} render={props => <Feed {...props} userProfileID={parseInt(match.params.id)} profile={profile} />} />
                   <Route exact path={`${match.url}/view/:viewProfileId`}  render={props => <ViewOtherGallery {...props} userProfileID={parseInt(match.params.id)} />} />
-
                 </div>
-
             </div>
         )
     }

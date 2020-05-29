@@ -33,7 +33,7 @@ export default class Gallery extends Component {
         return <div className="top-gallery"> 
             <img className="image-gallery" src={profile.img_file}></img>
             <h2>{profile.username}</h2>
-            <h5 onClick={this.handleAddFollower}>{followers.length} Followers | {following.length} Following</h5>
+            <h5 onClick={this.handleAddFollower}>{followers.length} Followers <span style={{color: 'green', cursor: 'pointer'}}>+</span> | {following.length} Following</h5>
             
         </div>
         
