@@ -23,8 +23,8 @@ export default class SideMenu extends Component {
                 <br/>
                 <Link to={`${match.url}/gallery`}>Gallery</Link>
                 <br/>
-                <Link to={`${match.url}/stats`}>Stats</Link>
-                <br/>
+                {/* <Link to={`${match.url}/stats`}>Stats</Link>
+                <br/> */}
 
             </div>
         )

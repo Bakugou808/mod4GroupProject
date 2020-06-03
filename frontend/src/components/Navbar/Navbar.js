@@ -23,6 +23,10 @@ class Navbar extends Component {
         }
     }
 
+    handleProfileSwitch = () => {
+        this.props.history.push("/profiles")
+    }
+
     handleClickForUser = () => {
         this.props.history.push(`/profiles/${this.props.user.id}/gallery`)
     }
@@ -44,7 +48,7 @@ class Navbar extends Component {
                 </div> : null 
                 }
                 <div>
-                { this.props.history.location.pathname !== '/' ? username && `${username}'s Profile` : null}
+                <span style={{cursor:"pointer"}} onClick={this.handleProfileSwitch}>{ this.props.history.location.pathname !== '/' ? username && `${username}'s Profile` : null}</span>
                 {
                     this.props.user.name ? <button className="ml-3 mb-1 option btn btn-outline-danger" onClick={this.onLogout}>SIGN OUT</button> : null
                 }           
